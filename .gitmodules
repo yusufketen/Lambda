@@ -4,3 +4,6 @@
 [submodule "Lambda/vendor/GLFW"]
 	path = Lambda/vendor/GLFW
 	url = https://github.com/TheCherno/glfw
+[submodule "Lambda/vendor/imgui"]
+	path = Lambda/vendor/imgui
+	url = https://github.com/TheCherno/imgui
