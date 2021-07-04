@@ -22,7 +22,6 @@ namespace Lambda {
 
 		EVENT_CLASS_TYPE(MouseMoved)
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
-
 	private:
 		float m_MouseX, m_MouseY;
 	};
@@ -45,7 +44,6 @@ namespace Lambda {
 
 		EVENT_CLASS_TYPE(MouseScrolled)
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
-
 	private:
 		float m_XOffset, m_YOffset;
 	};
@@ -63,10 +61,10 @@ namespace Lambda {
 		int m_Button;
 	};
 
-	class LAMBDA_API MouseButtonPressed : public MouseButtonEvent
+	class LAMBDA_API MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
-		MouseButtonPressed(int button)
+		MouseButtonPressedEvent(int button)
 			: MouseButtonEvent(button) {}
 
 		std::string ToString() const override
@@ -79,10 +77,10 @@ namespace Lambda {
 		EVENT_CLASS_TYPE(MouseButtonPressed)
 	};
 
-	class LAMBDA_API MouseButtonReleased : public MouseButtonEvent
+	class LAMBDA_API MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
-		MouseButtonReleased(int button)
+		MouseButtonReleasedEvent(int button)
 			: MouseButtonEvent(button) {}
 
 		std::string ToString() const override
