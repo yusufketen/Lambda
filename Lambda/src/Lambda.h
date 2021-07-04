@@ -2,8 +2,8 @@
 
 // For use by Lambda applications
 
-#include "stdio.h"
 #include "Lambda/Application.h"
+#include "Lambda/Log.h"
 
 // --- Entry Point ---
 #include "Lambda/EntryPoint.h"
