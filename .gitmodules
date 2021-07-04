@@ -1,3 +1,6 @@
 [submodule "Lambda/vendor/spdlog"]
 	path = Lambda/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+[submodule "Lambda/vendor/GLFW"]
+	path = Lambda/vendor/GLFW
+	url = https://github.com/TheCherno/glfw

@@ -10,6 +10,12 @@ workspace "Lambda"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- Include directories relative to root folder (solution directory)
+IncludeDir = {}
+IncludeDir["GLFW"] = "Lambda/vendor/GLFW/include"
+
+include "Lambda/vendor/GLFW"
+
 project "Lambda"
 	location "Lambda"
 	kind "SharedLib"
@@ -17,6 +23,9 @@ project "Lambda"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	pchheader "lmpch.h"
+	pchsource "Lambda/src/lmpch.cpp"
 
 	files
 	{
@@ -27,7 +36,14 @@ project "Lambda"
 	includedirs
 	{
 		"%{prj.name}/vendor/spdlog/include",
-		"Lambda/src"
+		"Lambda/src",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links 
+	{ 
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"

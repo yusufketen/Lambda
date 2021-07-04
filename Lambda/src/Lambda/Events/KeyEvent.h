@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace Lambda {
 	class LAMBDA_API KeyEvent : public Event
 	{

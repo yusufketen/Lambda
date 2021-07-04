@@ -1,13 +1,16 @@
+#include "lmpch.h"
 #include "Application.h"
 
 #include "Lambda/Events/ApplicationEvent.h"
 #include "Lambda/Log.h"
 
+#include <GLFW/glfw3.h>
+
 namespace Lambda {
 
 	Application::Application()
 	{
-
+		m_Window = std::unique_ptr<Window>(Window::Create());
 	}
 
 	Application::~Application()
@@ -17,10 +20,12 @@ namespace Lambda {
 
 	void Application::Run()
 	{
-		WindowResizeEvent e(1280, 720);
-		LM_TRACE(e);
-
-		while (true);
+		while (m_Running)
+		{
+			glClearColor(1, 0, 1, 1);
+			glClear(GL_COLOR_BUFFER_BIT);
+			m_Window->OnUpdate();
+		}
 	}
 
 }

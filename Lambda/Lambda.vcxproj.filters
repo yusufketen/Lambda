@@ -7,6 +7,12 @@
     <Filter Include="Lambda\Events">
       <UniqueIdentifier>{0ABEF0AE-767E-6CE5-3FB9-B562AB38B1C1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Lambda.h" />
@@ -34,6 +40,13 @@
     <ClInclude Include="src\Lambda\Log.h">
       <Filter>Lambda</Filter>
     </ClInclude>
+    <ClInclude Include="src\Lambda\Window.h">
+      <Filter>Lambda</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lmpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Lambda\Application.cpp">
@@ -42,5 +55,9 @@
     <ClCompile Include="src\Lambda\Log.cpp">
       <Filter>Lambda</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lmpch.cpp" />
   </ItemGroup>
 </Project>

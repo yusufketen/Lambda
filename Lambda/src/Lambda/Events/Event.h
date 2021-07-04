@@ -1,9 +1,7 @@
 #pragma once
 
+#include "lmpch.h"
 #include "Lambda/Core.h"
-
-#include <string>
-#include <functional>
 
 namespace Lambda {
 
