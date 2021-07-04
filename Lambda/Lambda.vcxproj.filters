@@ -37,6 +37,12 @@
     <ClInclude Include="src\Lambda\Events\MouseEvent.h">
       <Filter>Lambda\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Lambda\Layer.h">
+      <Filter>Lambda</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lambda\LayerStack.h">
+      <Filter>Lambda</Filter>
+    </ClInclude>
     <ClInclude Include="src\Lambda\Log.h">
       <Filter>Lambda</Filter>
     </ClInclude>
@@ -50,6 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Lambda\Application.cpp">
+      <Filter>Lambda</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Lambda\Layer.cpp">
+      <Filter>Lambda</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Lambda\LayerStack.cpp">
       <Filter>Lambda</Filter>
     </ClCompile>
     <ClCompile Include="src\Lambda\Log.cpp">

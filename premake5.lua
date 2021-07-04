@@ -13,8 +13,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
 IncludeDir["GLFW"] = "Lambda/vendor/GLFW/include"
+IncludeDir["Glad"] = "Lambda/vendor/Glad/include"
 
 include "Lambda/vendor/GLFW"
+include "Lambda/vendor/Glad"
 
 project "Lambda"
 	location "Lambda"
@@ -37,12 +39,14 @@ project "Lambda"
 	{
 		"%{prj.name}/vendor/spdlog/include",
 		"Lambda/src",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links 
 	{ 
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -54,7 +58,8 @@ project "Lambda"
 		defines
 		{
 			"LM_PLATFORM_WINDOWS",
-			"LM_BUILD_DLL"
+			"LM_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands
