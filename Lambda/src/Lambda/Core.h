@@ -10,6 +10,10 @@
 	#error Lambda only supports Windows!
 #endif
 
+#ifdef LM_DEBUG
+#define LM_ENABLE_ASSERTS
+#endif
+
 #ifdef LM_ENABLE_ASSERTS
 #define LM_ASSERT(x, ...) { if(!(x)) { LM_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
 #define LM_CORE_ASSERT(x, ...) { if(!(x)) { LM_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
@@ -19,3 +23,5 @@
 #endif
 
 #define BIT(x) (1 << x)
+
+#define LM_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)

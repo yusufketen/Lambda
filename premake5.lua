@@ -1,5 +1,6 @@
 workspace "Lambda"
 	architecture "x64"
+	startproject "Sandbox"
 
 	configurations
 	{
@@ -25,6 +26,8 @@ project "Lambda"
 	location "Lambda"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "off"
+
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -58,7 +61,6 @@ project "Lambda"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -70,28 +72,29 @@ project "Lambda"
 
 		postbuildcommands
 		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
 		}
 
 		filter "configurations:Debug"
 			defines "LM_DEBUG"
-			buildoptions "/MDd"
+			runtime "Debug"
 			symbols "On"
 
 		filter "configurations:Release"
 			defines "LM_RELEASE"
-			buildoptions "/MD"
+			runtime "Release"
 			optimize "On"
 		
 		filter "configurations:Dist"
 			defines "LM_DIST"
-			buildoptions "/MD"
+			runtime "Release"
 			optimize "On"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -115,7 +118,6 @@ project "Sandbox"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -125,15 +127,15 @@ project "Sandbox"
 
 		filter "configurations:Debug"
 			defines "LM_DEBUG"
-			buildoptions "/MDd"
+			runtime "Debug"
 			symbols "On"
 
 		filter "configurations:Release"
 			defines "LM_RELEASE"
-			buildoptions "/MD"
+			runtime "Release"
 			optimize "On"
 		
 		filter "configurations:Dist"
 			defines "LM_DIST"
-			buildoptions "/MD"
+			runtime "Release"
 			optimize "On"
