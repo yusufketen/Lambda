@@ -16,6 +16,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "Lambda/vendor/GLFW/include"
 IncludeDir["Glad"] = "Lambda/vendor/Glad/include"
 IncludeDir["ImGui"] = "Lambda/vendor/imgui"
+IncludeDir["glm"] = "Lambda/vendor/glm"
 
 include "Lambda/vendor/GLFW"
 include "Lambda/vendor/Glad"
@@ -38,7 +39,9 @@ project "Lambda"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl",
 	}
 
 	includedirs
@@ -48,7 +51,7 @@ project "Lambda"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
-
+		"%{IncludeDir.glm}"
 	}
 
 	links 
@@ -108,7 +111,8 @@ project "Sandbox"
 	includedirs
 	{
 		"Lambda/vendor/spdlog/include",
-		"Lambda/src"
+		"Lambda/src",
+		"%{IncludeDir.glm}"
 	}
 
 	links

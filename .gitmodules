@@ -7,3 +7,6 @@
 [submodule "Lambda/vendor/imgui"]
 	path = Lambda/vendor/imgui
 	url = https://github.com/TheCherno/imgui
+[submodule "Lambda/vendor/glm"]
+	path = Lambda/vendor/glm
+	url = https://github.com/g-truc/glm
