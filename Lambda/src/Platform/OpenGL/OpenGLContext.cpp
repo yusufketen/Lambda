@@ -18,6 +18,11 @@ namespace Lambda {
 		glfwMakeContextCurrent(m_WindowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		LM_CORE_ASSERT(status, "Failed to initialize Glad!");
+
+		LM_CORE_INFO("OpenGL Info:");
+		LM_CORE_INFO("  Vendor: {0}", glGetString(GL_VENDOR));
+		LM_CORE_INFO("  Renderer: {0}", glGetString(GL_RENDERER));
+		LM_CORE_INFO("  Version: {0}", glGetString(GL_VERSION));
 	}
 
 	void OpenGLContext::SwapBuffers()

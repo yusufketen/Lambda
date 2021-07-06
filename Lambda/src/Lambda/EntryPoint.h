@@ -9,8 +9,6 @@ int main()
 	Lambda::Log::Init();
 
 	LM_CORE_WARN("Initialized Log!");
-	LM_INFO("Hello!");
-	LM_CRITICAL("TEST FATAL!");
 
 	auto app = Lambda::CreateApplication();
 	app->Run();
