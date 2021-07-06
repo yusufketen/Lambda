@@ -10,12 +10,19 @@ public:
 
 	void OnUpdate() override
 	{
-		LM_INFO("ExampleLayer::Update");
+		if (Lambda::Input::IsKeyPressed(LM_KEY_TAB))
+			LM_TRACE("Tab key is pressed (poll)!");
 	}
 
 	void OnEvent(Lambda::Event& event) override
 	{
-		LM_TRACE("{0}", event);
+		if (event.GetEventType() == Lambda::EventType::KeyPressed)
+		{
+			Lambda::KeyPressedEvent& e = (Lambda::KeyPressedEvent&)event;
+			if (e.GetKeyCode() == LM_KEY_TAB)
+				LM_TRACE("Tab key is pressed (event)!");
+			LM_TRACE("{0}", (char)e.GetKeyCode());
+		}
 	}
 
 };

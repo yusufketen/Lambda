@@ -67,6 +67,8 @@
     <ClInclude Include="src\lmpch.h" />
     <ClInclude Include="src\Lambda\Input.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
+    <ClInclude Include="src\Lambda\KeyCodes.h" />
+    <ClInclude Include="src\Lambda\MouseButtonCodes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Lambda\Application.cpp">

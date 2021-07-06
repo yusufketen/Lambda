@@ -159,9 +159,11 @@
     <ClInclude Include="src\Lambda\Events\MouseEvent.h" />
     <ClInclude Include="src\Lambda\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Lambda\Input.h" />
+    <ClInclude Include="src\Lambda\KeyCodes.h" />
     <ClInclude Include="src\Lambda\Layer.h" />
     <ClInclude Include="src\Lambda\LayerStack.h" />
     <ClInclude Include="src\Lambda\Log.h" />
+    <ClInclude Include="src\Lambda\MouseButtonCodes.h" />
     <ClInclude Include="src\Lambda\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
