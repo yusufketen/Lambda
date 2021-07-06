@@ -112,6 +112,7 @@ project "Sandbox"
 	{
 		"Lambda/vendor/spdlog/include",
 		"Lambda/src",
+		"Lambda/vendor",
 		"%{IncludeDir.glm}"
 	}
 

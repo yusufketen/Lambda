@@ -6,6 +6,8 @@
 #include "Lambda/Events/Event.h"
 #include "Lambda/Events/ApplicationEvent.h"
 
+#include "Lambda/ImGui/ImGuiLayer.h"
+
 namespace Lambda {
 	class LAMBDA_API Application
 	{
@@ -28,6 +30,7 @@ namespace Lambda {
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 	private:

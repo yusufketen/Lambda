@@ -1,5 +1,7 @@
 #include <Lambda.h>
 
+#include "imgui/imgui.h"
+
 class ExampleLayer : public Lambda::Layer
 {
 public:
@@ -12,6 +14,13 @@ public:
 	{
 		if (Lambda::Input::IsKeyPressed(LM_KEY_TAB))
 			LM_TRACE("Tab key is pressed (poll)!");
+	}
+
+	virtual void OnImGuiRender() override
+	{
+		ImGui::Begin("Test");
+		ImGui::Text("Hello World");
+		ImGui::End();
 	}
 
 	void OnEvent(Lambda::Event& event) override
@@ -33,7 +42,6 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new Lambda::ImGuiLayer());
 	}
 
 	~Sandbox()
