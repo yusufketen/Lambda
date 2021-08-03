@@ -1346,6 +1346,7 @@
     </ClInclude>
     <ClInclude Include="src\Lambda\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Lambda\Renderer\Shader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Lambda\Application.cpp">
@@ -1376,5 +1377,6 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Lambda\Renderer\Shader.cpp" />
   </ItemGroup>
 </Project>

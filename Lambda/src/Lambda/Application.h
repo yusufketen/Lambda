@@ -8,7 +8,10 @@
 
 #include "Lambda/ImGui/ImGuiLayer.h"
 
-namespace Lambda {
+#include "Lambda/Renderer/Shader.h"
+
+namespace Lambda
+{
 	class LAMBDA_API Application
 	{
 	public:
@@ -35,6 +38,7 @@ namespace Lambda {
 		LayerStack m_LayerStack;
 
 		unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+		std::unique_ptr<Shader> m_Shader;
 
 	private:
 		static Application* s_Instance;
@@ -43,4 +47,3 @@ namespace Lambda {
 	// Should be defined in CLIENT
 	Application* CreateApplication();
 }
-

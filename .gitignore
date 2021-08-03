@@ -5,3 +5,6 @@ bin-int/
 
 # Files
 *.user
+
+# imgui temp file
+SandBox/imgui.ini
