@@ -12,6 +12,17 @@
 
 #include "Lambda/ImGui/ImGuiLayer.h"
 
-// --- Entry Point ---
+// --- Renderer ------------------------------
+#include "Lambda/Renderer/Renderer.h"
+#include "Lambda/Renderer/RenderCommand.h"
+
+#include "Lambda/Renderer/Buffer.h"
+#include "Lambda/Renderer/Shader.h"
+#include "Lambda/Renderer/VertexArray.h"
+
+#include "Lambda/Renderer/OrthographicCamera.h"
+// -------------------------------------------
+
+// --- Entry Point -----------------------------
 #include "Lambda/EntryPoint.h"
-// -------------------
+// ---------------------------------------------
