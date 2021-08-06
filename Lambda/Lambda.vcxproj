@@ -143,6 +143,7 @@
     <ClInclude Include="src\Lambda.h" />
     <ClInclude Include="src\Lambda\Application.h" />
     <ClInclude Include="src\Lambda\Core.h" />
+    <ClInclude Include="src\Lambda\Core\Timestep.h" />
     <ClInclude Include="src\Lambda\EntryPoint.h" />
     <ClInclude Include="src\Lambda\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Lambda\Events\Event.h" />

@@ -121,22 +121,24 @@ public:
 		m_BlueShader.reset(new Lambda::Shader(blueShaderVertexSrc, blueShaderFragmentSrc));
 	}
 
-	void OnUpdate() override
+	void OnUpdate(Lambda::Timestep ts) override
 	{
+		//LM_TRACE("Timestep: {0}ms", ts.GetMilliseconds());
+
 		if (Lambda::Input::IsKeyPressed(LM_KEY_LEFT))
-			m_CameraPosition.x += m_CameraMoveSpeed;
+			m_CameraPosition.x += m_CameraMoveSpeed * ts;
 		else if (Lambda::Input::IsKeyPressed(LM_KEY_RIGHT))
-			m_CameraPosition.x -= m_CameraMoveSpeed;
+			m_CameraPosition.x -= m_CameraMoveSpeed * ts;
 
 		if (Lambda::Input::IsKeyPressed(LM_KEY_UP))
-			m_CameraPosition.y -= m_CameraMoveSpeed;
+			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
 		else if (Lambda::Input::IsKeyPressed(LM_KEY_DOWN))
-			m_CameraPosition.y += m_CameraMoveSpeed;
+			m_CameraPosition.y += m_CameraMoveSpeed * ts;
 
 		if (Lambda::Input::IsKeyPressed(LM_KEY_A))
-			m_CameraRotation -= m_CameraRotationSpeed;
+			m_CameraRotation -= m_CameraRotationSpeed * ts;
 		else if (Lambda::Input::IsKeyPressed(LM_KEY_D))
-			m_CameraRotation += m_CameraRotationSpeed;
+			m_CameraRotation += m_CameraRotationSpeed * ts;
 
 		Lambda::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Lambda::RenderCommand::Clear();
@@ -171,10 +173,10 @@ private:
 
 	Lambda::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
-	float m_CameraMoveSpeed = 0.01f;
+	float m_CameraMoveSpeed = 5.0f;
 
 	float m_CameraRotation = 0.0f;
-	float m_CameraRotationSpeed = 2.0f;
+	float m_CameraRotationSpeed = 180.0f;
 };
 
 class Sandbox : public Lambda::Application

@@ -6,12 +6,9 @@
 #include "Lambda/Events/Event.h"
 #include "Lambda/Events/ApplicationEvent.h"
 
-#include "Lambda/ImGui/ImGuiLayer.h"
+#include "Lambda/Core/Timestep.h"
 
-#include "Lambda/Renderer/Shader.h"
-#include "Renderer/Buffer.h"
-#include "Renderer/OrthographicCamera.h"
-#include "Renderer/VertexArray.h"
+#include "Lambda/ImGui/ImGuiLayer.h"
 
 namespace Lambda
 {
@@ -34,12 +31,12 @@ namespace Lambda
 
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
-
+	private:
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
-
+		float m_LastFrameTime = 0.0f;
 	private:
 		static Application* s_Instance;
 	};

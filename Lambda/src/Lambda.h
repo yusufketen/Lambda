@@ -6,6 +6,8 @@
 #include "Lambda/Layer.h"
 #include "Lambda/Log.h"
 
+#include "Lambda/Core/Timestep.h"
+
 #include "Lambda/Input.h"
 #include "Lambda/KeyCodes.h"
 #include "Lambda/MouseButtonCodes.h"
