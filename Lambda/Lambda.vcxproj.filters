@@ -1355,6 +1355,7 @@
     <ClInclude Include="src\Lambda\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Lambda\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
+    <ClInclude Include="src\Lambda\Renderer\OrthographicCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Lambda\Application.cpp">
@@ -1394,5 +1395,6 @@
     <ClCompile Include="src\Lambda\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Lambda\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
+    <ClCompile Include="src\Lambda\Renderer\OrthographicCamera.cpp" />
   </ItemGroup>
 </Project>

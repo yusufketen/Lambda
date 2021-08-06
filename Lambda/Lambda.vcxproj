@@ -157,6 +157,7 @@
     <ClInclude Include="src\Lambda\MouseButtonCodes.h" />
     <ClInclude Include="src\Lambda\Renderer\Buffer.h" />
     <ClInclude Include="src\Lambda\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Lambda\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\Lambda\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Lambda\Renderer\Renderer.h" />
     <ClInclude Include="src\Lambda\Renderer\RendererAPI.h" />
@@ -594,6 +595,7 @@
     <ClCompile Include="src\Lambda\LayerStack.cpp" />
     <ClCompile Include="src\Lambda\Log.cpp" />
     <ClCompile Include="src\Lambda\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Lambda\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Lambda\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Lambda\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Lambda\Renderer\RendererAPI.cpp" />

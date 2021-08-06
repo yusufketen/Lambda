@@ -10,6 +10,7 @@
 
 #include "Lambda/Renderer/Shader.h"
 #include "Renderer/Buffer.h"
+#include "Renderer/OrthographicCamera.h"
 #include "Renderer/VertexArray.h"
 
 namespace Lambda
