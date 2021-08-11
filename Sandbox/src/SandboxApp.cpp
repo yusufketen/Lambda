@@ -21,7 +21,7 @@ public:
 			 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f,
 		};
 
-		std::shared_ptr<Lambda::VertexBuffer> vertexBuffer;
+		Lambda::Ref<Lambda::VertexBuffer> vertexBuffer;
 		vertexBuffer.reset(Lambda::VertexBuffer::Create(vertices, sizeof(vertices)));
 		Lambda::BufferLayout layout = {
 			{Lambda::ShaderDataType::Float3, "a_Position" },
@@ -31,7 +31,7 @@ public:
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		uint32_t indices[3] = { 0, 1, 2 };
-		std::shared_ptr<Lambda::IndexBuffer> indexBuffer;
+		Lambda::Ref<Lambda::IndexBuffer> indexBuffer;
 		indexBuffer.reset(Lambda::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
@@ -44,7 +44,7 @@ public:
 			-0.5f,  0.5f, 0.0f
 		};
 
-		std::shared_ptr<Lambda::VertexBuffer> squareVB;
+		Lambda::Ref<Lambda::VertexBuffer> squareVB;
 		squareVB.reset(Lambda::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		squareVB->SetLayout({
 			{Lambda::ShaderDataType::Float3, "a_Position" }
@@ -52,7 +52,7 @@ public:
 		m_SquareVA->AddVertexBuffer(squareVB);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr<Lambda::IndexBuffer> squareIB;
+		Lambda::Ref<Lambda::IndexBuffer> squareIB;
 		squareIB.reset(Lambda::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
@@ -193,11 +193,11 @@ public:
 	}
 
 private:
-	std::shared_ptr<Lambda::Shader> m_Shader;
-	std::shared_ptr<Lambda::VertexArray> m_VertexArray;
+	Lambda::Ref<Lambda::Shader> m_Shader;
+	Lambda::Ref<Lambda::VertexArray> m_VertexArray;
 
-	std::shared_ptr<Lambda::Shader> m_FlatColorShader;
-	std::shared_ptr<Lambda::VertexArray> m_SquareVA;
+	Lambda::Ref<Lambda::Shader> m_FlatColorShader;
+	Lambda::Ref<Lambda::VertexArray> m_SquareVA;
 
 	Lambda::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
