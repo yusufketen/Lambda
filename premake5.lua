@@ -17,6 +17,7 @@ IncludeDir["GLFW"] = "Lambda/vendor/GLFW/include"
 IncludeDir["Glad"] = "Lambda/vendor/Glad/include"
 IncludeDir["ImGui"] = "Lambda/vendor/imgui"
 IncludeDir["glm"] = "Lambda/vendor/glm"
+IncludeDir["stb_image"] = "Lambda/vendor/stb_image"
 
 include "Lambda/vendor/GLFW"
 include "Lambda/vendor/Glad"
@@ -43,6 +44,8 @@ project "Lambda"
 		"%{prj.name}/src/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl",
+		"%{prj.name}/vendor/stb_image/**.h",
+		"%{prj.name}/vendor/stb_image/**.cpp",
 	}
 	
 	defines
@@ -57,7 +60,8 @@ project "Lambda"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.stb_image}"
 	}
 
 	links 

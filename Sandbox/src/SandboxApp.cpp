@@ -37,17 +37,18 @@ public:
 
 		m_SquareVA.reset(Lambda::VertexArray::Create());
 
-		float squareVertices[3 * 4] = {
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.5f,  0.5f, 0.0f,
-			-0.5f,  0.5f, 0.0f
+		float squareVertices[5 * 4] = {
+			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
+			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 		};
 
 		Lambda::Ref<Lambda::VertexBuffer> squareVB;
 		squareVB.reset(Lambda::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		squareVB->SetLayout({
-			{Lambda::ShaderDataType::Float3, "a_Position" }
+			{Lambda::ShaderDataType::Float3, "a_Position" },
+			{Lambda::ShaderDataType::Float2, "a_TexCoord" },
 			});
 		m_SquareVA->AddVertexBuffer(squareVB);
 
@@ -128,6 +129,42 @@ public:
 
 
 		m_FlatColorShader.reset(Lambda::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
+
+		std::string textureShaderVertexSrc = R"(
+			#version 330 core
+
+			layout(location = 0) in  vec3 a_Position;
+			layout(location = 1) in  vec2 a_TexCoord;
+
+			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;
+
+			out vec2 v_TexCoord;
+
+			void main()
+			{
+				v_TexCoord = a_TexCoord;
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
+			}
+		)";
+
+		std::string textureShaderFragmentSrc = R"(
+			#version 330 core
+
+			layout(location = 0) out  vec4 color;
+
+			in vec2 v_TexCoord;
+
+			uniform vec3 u_Color;
+
+			void main()
+			{
+				color = vec4(v_TexCoord, 0.0, 1.0);
+			}
+		)";
+
+
+		m_TextureShader.reset(Lambda::Shader::Create(textureShaderVertexSrc, textureShaderFragmentSrc));
 	}
 
 	void OnUpdate(Lambda::Timestep ts) override
@@ -173,7 +210,11 @@ public:
 			}
 		}
 
-		Lambda::Renderer::Submit(m_Shader, m_VertexArray);
+		Lambda::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+
+
+		// Triangle
+		//Lambda::Renderer::Submit(m_Shader, m_VertexArray);
 
 		Lambda::Renderer::EndScene();
 	}
@@ -196,7 +237,7 @@ private:
 	Lambda::Ref<Lambda::Shader> m_Shader;
 	Lambda::Ref<Lambda::VertexArray> m_VertexArray;
 
-	Lambda::Ref<Lambda::Shader> m_FlatColorShader;
+	Lambda::Ref<Lambda::Shader> m_FlatColorShader, m_TextureShader;
 	Lambda::Ref<Lambda::VertexArray> m_SquareVA;
 
 	Lambda::OrthographicCamera m_Camera;
