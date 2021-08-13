@@ -77,7 +77,7 @@
       <PrecompiledHeaderFile>lmpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;LM_PLATFORM_WINDOWS;LM_BUILD_DLL;GLFW_INCLUDE_NONE;LM_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -97,7 +97,7 @@
       <PrecompiledHeaderFile>lmpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;LM_PLATFORM_WINDOWS;LM_BUILD_DLL;GLFW_INCLUDE_NONE;LM_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -121,7 +121,7 @@
       <PrecompiledHeaderFile>lmpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;LM_PLATFORM_WINDOWS;LM_BUILD_DLL;GLFW_INCLUDE_NONE;LM_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -156,6 +156,7 @@
     <ClInclude Include="src\Lambda\LayerStack.h" />
     <ClInclude Include="src\Lambda\Log.h" />
     <ClInclude Include="src\Lambda\MouseButtonCodes.h" />
+    <ClInclude Include="src\Lambda\OrthographicCameraController.h" />
     <ClInclude Include="src\Lambda\Renderer\Buffer.h" />
     <ClInclude Include="src\Lambda\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Lambda\Renderer\OrthographicCamera.h" />
@@ -163,12 +164,14 @@
     <ClInclude Include="src\Lambda\Renderer\Renderer.h" />
     <ClInclude Include="src\Lambda\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Lambda\Renderer\Shader.h" />
+    <ClInclude Include="src\Lambda\Renderer\Texture.h" />
     <ClInclude Include="src\Lambda\Renderer\VertexArray.h" />
     <ClInclude Include="src\Lambda\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
@@ -588,6 +591,7 @@
     <ClInclude Include="vendor\glm\glm\vec3.hpp" />
     <ClInclude Include="vendor\glm\glm\vec4.hpp" />
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp" />
+    <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Lambda\Application.cpp" />
@@ -596,23 +600,27 @@
     <ClCompile Include="src\Lambda\Layer.cpp" />
     <ClCompile Include="src\Lambda\LayerStack.cpp" />
     <ClCompile Include="src\Lambda\Log.cpp" />
+    <ClCompile Include="src\Lambda\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Lambda\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Lambda\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Lambda\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Lambda\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Lambda\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Lambda\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Lambda\Renderer\Texture.cpp" />
     <ClCompile Include="src\Lambda\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\lmpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="vendor\stb_image\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">
