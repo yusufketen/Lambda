@@ -11,6 +11,7 @@
 #include "Lambda/Input.h"
 #include "Lambda/KeyCodes.h"
 #include "Lambda/MouseButtonCodes.h"
+#include "Lambda/OrthographicCameraController.h"
 
 #include "Lambda/ImGui/ImGuiLayer.h"
 
