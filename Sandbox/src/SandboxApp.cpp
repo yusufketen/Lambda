@@ -167,6 +167,7 @@ public:
 		m_TextureShader.reset(Lambda::Shader::Create(textureShaderVertexSrc, textureShaderFragmentSrc));
 
 		m_Texture = Lambda::Texture2D::Create("assets/textures/Checkerboard.png");
+		m_LogoTexture = Lambda::Texture2D::Create("assets/textures/ChernoLogo.png");
 
 		std::dynamic_pointer_cast<Lambda::OpenGLShader>(m_TextureShader)->Bind();
 		std::dynamic_pointer_cast<Lambda::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
@@ -176,14 +177,12 @@ public:
 	{
 		//LM_TRACE("Timestep: {0}ms", ts.GetMilliseconds());
 
-				// Update
+		// Update
 		m_CameraController.OnUpdate(ts);
 
 		// Render
 		Lambda::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
 		Lambda::RenderCommand::Clear();
-
-		
 
 		Lambda::Renderer::BeginScene(m_CameraController.GetCamera());
 
@@ -205,6 +204,8 @@ public:
 		m_Texture->Bind();
 		Lambda::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
+		m_LogoTexture->Bind();
+		Lambda::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 		// Triangle
 		//Lambda::Renderer::Submit(m_Shader, m_VertexArray);
@@ -233,7 +234,7 @@ private:
 	Lambda::Ref<Lambda::Shader> m_FlatColorShader, m_TextureShader;
 	Lambda::Ref<Lambda::VertexArray> m_SquareVA;
 
-	Lambda::Ref<Lambda::Texture2D> m_Texture;
+	Lambda::Ref<Lambda::Texture2D> m_Texture, m_LogoTexture;
 
 	Lambda::OrthographicCameraController m_CameraController;
 
