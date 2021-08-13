@@ -20,6 +20,7 @@
 
 #include "Lambda/Renderer/Buffer.h"
 #include "Lambda/Renderer/Shader.h"
+#include "Lambda/Renderer/Texture.h"
 #include "Lambda/Renderer/VertexArray.h"
 
 #include "Lambda/Renderer/OrthographicCamera.h"

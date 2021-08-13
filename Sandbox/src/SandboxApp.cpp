@@ -155,16 +155,21 @@ public:
 
 			in vec2 v_TexCoord;
 
-			uniform vec3 u_Color;
+			uniform sampler2D u_Texture;;
 
 			void main()
 			{
-				color = vec4(v_TexCoord, 0.0, 1.0);
+				color = texture(u_Texture, v_TexCoord);
 			}
 		)";
 
 
 		m_TextureShader.reset(Lambda::Shader::Create(textureShaderVertexSrc, textureShaderFragmentSrc));
+
+		m_Texture = Lambda::Texture2D::Create("assets/textures/Checkerboard.png");
+
+		std::dynamic_pointer_cast<Lambda::OpenGLShader>(m_TextureShader)->Bind();
+		std::dynamic_pointer_cast<Lambda::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
 	}
 
 	void OnUpdate(Lambda::Timestep ts) override
@@ -210,6 +215,7 @@ public:
 			}
 		}
 
+		m_Texture->Bind();
 		Lambda::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 
@@ -239,6 +245,8 @@ private:
 
 	Lambda::Ref<Lambda::Shader> m_FlatColorShader, m_TextureShader;
 	Lambda::Ref<Lambda::VertexArray> m_SquareVA;
+
+	Lambda::Ref<Lambda::Texture2D> m_Texture;
 
 	Lambda::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
