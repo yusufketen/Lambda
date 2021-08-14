@@ -27,7 +27,3 @@
 #include "Lambda/Renderer/OrthographicCameraController.h"
 
 // -------------------------------------------
-
-// --- Entry Point -----------------------------
-#include "Lambda/Core/EntryPoint.h"
-// ---------------------------------------------
