@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Lambda/Window.h"
+#include "Lambda/Core/Window.h"
 #include "Lambda/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>

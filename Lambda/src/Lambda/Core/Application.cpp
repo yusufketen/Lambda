@@ -1,7 +1,7 @@
 #include "lmpch.h"
 #include "Application.h"
 
-#include "Lambda/Log.h"
+#include "Lambda/Core/Log.h"
 
 #include "Lambda/Renderer/Renderer.h"
 

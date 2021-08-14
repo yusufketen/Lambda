@@ -2,7 +2,7 @@
 #include "Core.h"
 
 #include "Window.h"
-#include "Lambda/LayerStack.h"
+#include "Lambda/Core/LayerStack.h"
 #include "Lambda/Events/Event.h"
 #include "Lambda/Events/ApplicationEvent.h"
 

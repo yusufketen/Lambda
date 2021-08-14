@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Lambda/Core.h"
+#include "Timestep.h"
+#include "Lambda/Core/Core.h"
 #include "Lambda/Events/Event.h"
-#include "Core/Timestep.h"
 
 namespace Lambda {
 

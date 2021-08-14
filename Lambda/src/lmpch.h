@@ -13,7 +13,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#include "Lambda/Log.h"
+#include "Lambda/Core/Log.h"
 
 #ifdef LM_PLATFORM_WINDOWS
 #include <Windows.h>

@@ -1,7 +1,7 @@
 #include "lmpch.h"
 #include "WindowsInput.h"
 
-#include "Lambda/Application.h"
+#include "Lambda/Core/Application.h"
 #include <GLFW/glfw3.h>
 
 namespace Lambda {

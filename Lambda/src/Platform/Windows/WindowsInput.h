@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Lambda/Input.h"
+#include "Lambda/Core/Input.h"
 
 namespace Lambda {
 

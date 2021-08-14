@@ -1,8 +1,8 @@
 ﻿#include "lmpch.h"
 #include "OrthographicCameraController.h"
 
-#include "Lambda/Input.h"
-#include "Lambda/KeyCodes.h"
+#include "Lambda/Core/Input.h"
+#include "Lambda/Core/KeyCodes.h"
 
 namespace Lambda {
 

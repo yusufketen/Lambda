@@ -2,16 +2,15 @@
 
 // For use by Lambda applications
 
-#include "Lambda/Application.h"
-#include "Lambda/Layer.h"
-#include "Lambda/Log.h"
+#include "Lambda/Core/Application.h"
+#include "Lambda/Core/Layer.h"
+#include "Lambda/Core/Log.h"
 
 #include "Lambda/Core/Timestep.h"
 
-#include "Lambda/Input.h"
-#include "Lambda/KeyCodes.h"
-#include "Lambda/MouseButtonCodes.h"
-#include "Lambda/OrthographicCameraController.h"
+#include "Lambda/Core/Input.h"
+#include "Lambda/Core/KeyCodes.h"
+#include "Lambda/Core/MouseButtonCodes.h"
 
 #include "Lambda/ImGui/ImGuiLayer.h"
 
@@ -25,8 +24,10 @@
 #include "Lambda/Renderer/VertexArray.h"
 
 #include "Lambda/Renderer/OrthographicCamera.h"
+#include "Lambda/Renderer/OrthographicCameraController.h"
+
 // -------------------------------------------
 
 // --- Entry Point -----------------------------
-#include "Lambda/EntryPoint.h"
+#include "Lambda/Core/EntryPoint.h"
 // ---------------------------------------------

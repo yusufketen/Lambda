@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Lambda/Core.h"
+#include "Lambda/Core/Core.h"
 #include "Layer.h"
 
 #include <vector>

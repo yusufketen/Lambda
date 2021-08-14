@@ -57,17 +57,38 @@
     <ClInclude Include="src\Lambda.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Lambda\Application.h">
-      <Filter>src\Lambda</Filter>
+    <ClInclude Include="src\Lambda\Core\Application.h">
+      <Filter>src\Lambda\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Lambda\Core.h">
-      <Filter>src\Lambda</Filter>
+    <ClInclude Include="src\Lambda\Core\Core.h">
+      <Filter>src\Lambda\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lambda\Core\EntryPoint.h">
+      <Filter>src\Lambda\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lambda\Core\Input.h">
+      <Filter>src\Lambda\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lambda\Core\KeyCodes.h">
+      <Filter>src\Lambda\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lambda\Core\Layer.h">
+      <Filter>src\Lambda\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lambda\Core\LayerStack.h">
+      <Filter>src\Lambda\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lambda\Core\Log.h">
+      <Filter>src\Lambda\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lambda\Core\MouseButtonCodes.h">
+      <Filter>src\Lambda\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Lambda\Core\Timestep.h">
       <Filter>src\Lambda\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Lambda\EntryPoint.h">
-      <Filter>src\Lambda</Filter>
+    <ClInclude Include="src\Lambda\Core\Window.h">
+      <Filter>src\Lambda\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Lambda\Events\ApplicationEvent.h">
       <Filter>src\Lambda\Events</Filter>
@@ -84,24 +105,6 @@
     <ClInclude Include="src\Lambda\ImGui\ImGuiLayer.h">
       <Filter>src\Lambda\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="src\Lambda\Input.h">
-      <Filter>src\Lambda</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Lambda\KeyCodes.h">
-      <Filter>src\Lambda</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Lambda\Layer.h">
-      <Filter>src\Lambda</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Lambda\LayerStack.h">
-      <Filter>src\Lambda</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Lambda\Log.h">
-      <Filter>src\Lambda</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Lambda\MouseButtonCodes.h">
-      <Filter>src\Lambda</Filter>
-    </ClInclude>
     <ClInclude Include="src\Lambda\Renderer\Buffer.h">
       <Filter>src\Lambda\Renderer</Filter>
     </ClInclude>
@@ -109,6 +112,9 @@
       <Filter>src\Lambda\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Lambda\Renderer\OrthographicCamera.h">
+      <Filter>src\Lambda\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lambda\Renderer\OrthographicCameraController.h">
       <Filter>src\Lambda\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Lambda\Renderer\RenderCommand.h">
@@ -128,9 +134,6 @@
     </ClInclude>
     <ClInclude Include="src\Lambda\Renderer\VertexArray.h">
       <Filter>src\Lambda\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Lambda\Window.h">
-      <Filter>src\Lambda</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
       <Filter>src\Platform\OpenGL</Filter>
@@ -1407,13 +1410,19 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Lambda\OrthographicCameraController.h">
-      <Filter>src\Lambda</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Lambda\Application.cpp">
-      <Filter>src\Lambda</Filter>
+    <ClCompile Include="src\Lambda\Core\Application.cpp">
+      <Filter>src\Lambda\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Lambda\Core\Layer.cpp">
+      <Filter>src\Lambda\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Lambda\Core\LayerStack.cpp">
+      <Filter>src\Lambda\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Lambda\Core\Log.cpp">
+      <Filter>src\Lambda\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Lambda\ImGui\ImGuiBuild.cpp">
       <Filter>src\Lambda\ImGui</Filter>
@@ -1421,19 +1430,13 @@
     <ClCompile Include="src\Lambda\ImGui\ImGuiLayer.cpp">
       <Filter>src\Lambda\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="src\Lambda\Layer.cpp">
-      <Filter>src\Lambda</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Lambda\LayerStack.cpp">
-      <Filter>src\Lambda</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Lambda\Log.cpp">
-      <Filter>src\Lambda</Filter>
-    </ClCompile>
     <ClCompile Include="src\Lambda\Renderer\Buffer.cpp">
       <Filter>src\Lambda\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Lambda\Renderer\OrthographicCamera.cpp">
+      <Filter>src\Lambda\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Lambda\Renderer\OrthographicCameraController.cpp">
       <Filter>src\Lambda\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Lambda\Renderer\RenderCommand.cpp">
@@ -1484,6 +1487,5 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Lambda\OrthographicCameraController.cpp" />
   </ItemGroup>
 </Project>
