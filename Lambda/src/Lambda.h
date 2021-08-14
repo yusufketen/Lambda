@@ -16,6 +16,7 @@
 
 // --- Renderer ------------------------------
 #include "Lambda/Renderer/Renderer.h"
+#include "Lambda/Renderer/Renderer2D.h"
 #include "Lambda/Renderer/RenderCommand.h"
 
 #include "Lambda/Renderer/Buffer.h"
