@@ -1490,6 +1490,8 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Lambda\Renderer\Renderer2D.cpp" />
+    <ClCompile Include="src\Lambda\Renderer\Renderer2D.cpp">
+      <Filter>src\Lambda\Renderer</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
