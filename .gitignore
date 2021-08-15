@@ -8,3 +8,6 @@ bin-int/
 
 # imgui temp file
 SandBox/imgui.ini
+Sandbox/LambdaProfile-Runtime.json
+Sandbox/LambdaProfile-Startup.json
+Sandbox/LambdaProfile-Shutdown.json
