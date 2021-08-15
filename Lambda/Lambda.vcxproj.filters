@@ -10,6 +10,9 @@
     <Filter Include="src\Lambda\Core">
       <UniqueIdentifier>{95A87724-0134-E5E8-0A45-68DD764F41E9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Lambda\Debug">
+      <UniqueIdentifier>{531679B3-3F0F-9805-6841-7D8A54997711}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Lambda\Events">
       <UniqueIdentifier>{61332626-CD49-24BC-16C1-AFDD8216F543}</UniqueIdentifier>
     </Filter>
@@ -90,6 +93,9 @@
     <ClInclude Include="src\Lambda\Core\Window.h">
       <Filter>src\Lambda\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Lambda\Debug\Instrumentor.h">
+      <Filter>src\Lambda\Debug</Filter>
+    </ClInclude>
     <ClInclude Include="src\Lambda\Events\ApplicationEvent.h">
       <Filter>src\Lambda\Events</Filter>
     </ClInclude>
@@ -121,6 +127,9 @@
       <Filter>src\Lambda\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Lambda\Renderer\Renderer.h">
+      <Filter>src\Lambda\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Lambda\Renderer\Renderer2D.h">
       <Filter>src\Lambda\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Lambda\Renderer\RendererAPI.h">
@@ -1410,10 +1419,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Lambda\Renderer\Renderer2D.h">
-      <Filter>src\Lambda\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Lambda\Debug\Instrumentor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Lambda\Core\Application.cpp">
@@ -1447,6 +1452,9 @@
       <Filter>src\Lambda\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Lambda\Renderer\Renderer.cpp">
+      <Filter>src\Lambda\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Lambda\Renderer\Renderer2D.cpp">
       <Filter>src\Lambda\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Lambda\Renderer\RendererAPI.cpp">
@@ -1490,9 +1498,6 @@
     </ClCompile>
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Lambda\Renderer\Renderer2D.cpp">
-      <Filter>src\Lambda\Renderer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

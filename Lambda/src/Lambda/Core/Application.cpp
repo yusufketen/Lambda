@@ -1,11 +1,12 @@
 #include "lmpch.h"
-#include "Application.h"
+#include "Lambda/Core/Application.h"
 
 #include "Lambda/Core/Log.h"
 
 #include "Lambda/Renderer/Renderer.h"
 
-#include "Input.h"
+#include "Lambda/Core/Input.h"
+
 #include "GLFW/glfw3.h"
 
 namespace Lambda {

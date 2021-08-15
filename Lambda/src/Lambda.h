@@ -2,6 +2,8 @@
 
 // For use by Lambda applications
 
+#include "Lambda/Core/Core.h"
+
 #include "Lambda/Core/Application.h"
 #include "Lambda/Core/Layer.h"
 #include "Lambda/Core/Log.h"

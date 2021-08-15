@@ -1,5 +1,5 @@
 workspace "Lambda"
-	architecture "x64"
+	architecture "x86_64"
 	startproject "Sandbox"
 
 	configurations
@@ -7,6 +7,11 @@ workspace "Lambda"
 		"Debug",
 		"Release",
 		"Dist"
+	}
+
+	flags
+	{
+		"MultiProcessorCompile"
 	}
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
@@ -19,10 +24,11 @@ IncludeDir["ImGui"] = "Lambda/vendor/imgui"
 IncludeDir["glm"] = "Lambda/vendor/glm"
 IncludeDir["stb_image"] = "Lambda/vendor/stb_image"
 
-include "Lambda/vendor/GLFW"
-include "Lambda/vendor/Glad"
-include "Lambda/vendor/imgui"
-
+group "Dependencies"
+	include "Lambda/vendor/GLFW"
+	include "Lambda/vendor/Glad"
+	include "Lambda/vendor/imgui"
+group ""
 
 project "Lambda"
 	location "Lambda"
