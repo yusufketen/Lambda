@@ -1,13 +1,25 @@
-# Directories
-.vs/
-bin/
+# Binaries
+**/bin/
+!vendor/bin/premake/
 bin-int/
 
 # Files
 *.user
 
-# imgui temp file
+# ImGui Temp file
 SandBox/imgui.ini
+
+# Lambda Log files
+*.log
+
+# Profile data files
 Sandbox/LambdaProfile-Runtime.json
 Sandbox/LambdaProfile-Startup.json
 Sandbox/LambdaProfile-Shutdown.json
+
+# Visual Studio files and folder
+.vs/
+**.sln
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user
