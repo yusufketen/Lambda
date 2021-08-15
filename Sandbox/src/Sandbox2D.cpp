@@ -13,22 +13,24 @@ Sandbox2D::Sandbox2D()
 
 void Sandbox2D::OnAttach()
 {
+	LM_PROFILE_FUNCTION();
+
 	m_CheckerboardTexture = Lambda::Texture2D::Create("assets/textures/Checkerboard.png");
 
 }
 
 void Sandbox2D::OnDetach()
 {
+	LM_PROFILE_FUNCTION();
+
 }
 
 void Sandbox2D::OnUpdate(Lambda::Timestep ts)
 {
 	LM_PROFILE_FUNCTION();
 	// Update
-	{
-		LM_PROFILE_SCOPE("CameraController::OnUpdate");
-		m_CameraController.OnUpdate(ts);
-	}
+
+	m_CameraController.OnUpdate(ts);
 
 	// Render
 

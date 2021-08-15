@@ -15,6 +15,8 @@ namespace Lambda {
 
 	void OpenGLContext::Init()
 	{
+		LM_PROFILE_FUNCTION();
+
 		glfwMakeContextCurrent(m_WindowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		LM_CORE_ASSERT(status, "Failed to initialize Glad!");
@@ -27,6 +29,8 @@ namespace Lambda {
 
 	void OpenGLContext::SwapBuffers()
 	{
+		LM_PROFILE_FUNCTION();
+
 		glfwSwapBuffers(m_WindowHandle);
 	}
 
