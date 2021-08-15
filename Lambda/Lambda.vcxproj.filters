@@ -1413,6 +1413,7 @@
     <ClInclude Include="src\Lambda\Renderer\Renderer2D.h">
       <Filter>src\Lambda\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Lambda\Debug\Instrumentor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Lambda\Core\Application.cpp">

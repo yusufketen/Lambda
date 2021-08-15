@@ -14,6 +14,7 @@
 #include <unordered_set>
 
 #include "Lambda/Core/Log.h"
+#include "Lambda/Debug/Instrumentor.h"
 
 #ifdef LM_PLATFORM_WINDOWS
 #include <Windows.h>

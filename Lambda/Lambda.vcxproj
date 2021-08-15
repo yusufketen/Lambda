@@ -152,6 +152,7 @@
     <ClInclude Include="src\Lambda\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\Lambda\Core\Timestep.h" />
     <ClInclude Include="src\Lambda\Core\Window.h" />
+    <ClInclude Include="src\Lambda\Debug\Instrumentor.h" />
     <ClInclude Include="src\Lambda\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Lambda\Events\Event.h" />
     <ClInclude Include="src\Lambda\Events\KeyEvent.h" />
