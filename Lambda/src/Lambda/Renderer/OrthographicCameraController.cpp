@@ -1,5 +1,6 @@
 ﻿#include "lmpch.h"
-#include "OrthographicCameraController.h"
+
+#include "Lambda/Renderer/OrthographicCameraController.h"
 
 #include "Lambda/Core/Input.h"
 #include "Lambda/Core/KeyCodes.h"

@@ -1,16 +1,16 @@
 #pragma once
 
-#include "Timestep.h"
 #include "Lambda/Core/Core.h"
+#include "Lambda/Core/Timestep.h"
 #include "Lambda/Events/Event.h"
 
 namespace Lambda {
 
-	class LAMBDA_API Layer
+	class Layer
 	{
 	public:
 		Layer(const std::string& name = "Layer");
-		virtual ~Layer();
+		virtual ~Layer() = default;
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}

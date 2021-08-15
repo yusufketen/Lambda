@@ -1,5 +1,6 @@
 #include "lmpch.h"
-#include "WindowsInput.h"
+
+#include "Platform/Windows/WindowsInput.h"
 
 #include "Lambda/Core/Application.h"
 #include <GLFW/glfw3.h>

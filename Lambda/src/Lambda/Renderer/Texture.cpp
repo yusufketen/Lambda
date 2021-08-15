@@ -1,7 +1,8 @@
 ﻿#include "lmpch.h"
-#include "Texture.h"
 
-#include "Renderer.h"
+#include "Lambda/Renderer/Texture.h"
+
+#include "Lambda/Renderer/Renderer.h"
 #include "Platform/OpenGL/OpenGLTexture.h"
 
 namespace Lambda

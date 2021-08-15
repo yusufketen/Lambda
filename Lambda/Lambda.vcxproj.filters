@@ -1442,6 +1442,9 @@
     <ClCompile Include="src\Lambda\Renderer\Buffer.cpp">
       <Filter>src\Lambda\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Lambda\Renderer\GraphicsContext.cpp">
+      <Filter>src\Lambda\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Lambda\Renderer\OrthographicCamera.cpp">
       <Filter>src\Lambda\Renderer</Filter>
     </ClCompile>

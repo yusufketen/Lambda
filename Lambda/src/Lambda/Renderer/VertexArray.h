@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include <memory>
+
 #include "Lambda/Renderer/Buffer.h"
 
 namespace Lambda

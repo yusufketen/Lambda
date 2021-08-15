@@ -1,9 +1,8 @@
 ﻿#include "lmpch.h"
-#include "RenderCommand.h"
 
-#include "Platform/OpenGL/OpenGLRendererAPI.h"
+#include "Lambda/Renderer/RenderCommand.h"
 
 namespace Lambda
 {
-	RendererAPI* RenderCommand::s_RendererAPI = new OpenGLRendererAPI;
+	Scope<RendererAPI> RenderCommand::s_RendererAPI = RendererAPI::Create();
 }

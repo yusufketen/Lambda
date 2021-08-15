@@ -1,16 +1,16 @@
 #pragma once
 
 #include "Lambda/Core/Core.h"
-#include "Layer.h"
+#include "Lambda/Core/Layer.h"
 
 #include <vector>
 
 namespace Lambda {
 
-	class LAMBDA_API LayerStack
+	class LayerStack
 	{
 	public:
-		LayerStack();
+		LayerStack() = default;
 		~LayerStack();
 
 		void PushLayer(Layer* layer);

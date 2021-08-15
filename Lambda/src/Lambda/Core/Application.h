@@ -1,7 +1,7 @@
 #pragma once
-#include "Core.h"
+#include "Lambda/Core/Core.h"
 
-#include "Window.h"
+#include "Lambda/Core/Window.h"
 #include "Lambda/Core/LayerStack.h"
 #include "Lambda/Events/Event.h"
 #include "Lambda/Events/ApplicationEvent.h"
@@ -12,7 +12,7 @@
 
 namespace Lambda
 {
-	class LAMBDA_API Application
+	class Application
 	{
 	public:
 		Application();

@@ -1,7 +1,8 @@
 #include "lmpch.h"
-#include "Shader.h"
 
-#include "Renderer.h"
+#include "Lambda/Renderer/Shader.h"
+
+#include "Lambda/Renderer/Renderer.h"
 #include "Platform/OpenGL/OpenGLShader.h"
 
 namespace Lambda
@@ -11,7 +12,7 @@ namespace Lambda
 		switch (Renderer::GetAPI())
 		{
 			case RendererAPI::API::None:	LM_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
-			case RendererAPI::API::OpenGL:	return std::make_shared<OpenGLShader>(filepath);
+			case RendererAPI::API::OpenGL:	return CreateRef<OpenGLShader>(filepath);
 		}
 
 		LM_CORE_ASSERT(false, "Unknown RendererAPI!");
@@ -23,7 +24,7 @@ namespace Lambda
 		switch (Renderer::GetAPI())
 		{
 		case RendererAPI::API::None:	LM_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
-		case RendererAPI::API::OpenGL:	return std::make_shared<OpenGLShader>(name, vertexSrc, fragmentSrc);
+		case RendererAPI::API::OpenGL:	return CreateRef<OpenGLShader>(name, vertexSrc, fragmentSrc);
 		}
 
 		LM_CORE_ASSERT(false, "Unknown RendererAPI!");

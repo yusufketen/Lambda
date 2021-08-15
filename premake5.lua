@@ -83,7 +83,6 @@ project "Lambda"
 
 		defines
 		{
-			"LM_PLATFORM_WINDOWS",
 			"LM_BUILD_DLL",
 			"GLFW_INCLUDE_NONE"
 		}
@@ -134,11 +133,6 @@ project "Sandbox"
 
 	filter "system:windows"
 		systemversion "latest"
-
-		defines
-		{
-			"LM_PLATFORM_WINDOWS"
-		}
 
 		filter "configurations:Debug"
 			defines "LM_DEBUG"

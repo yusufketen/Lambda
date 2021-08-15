@@ -1,7 +1,7 @@
 ﻿#pragma once
-#include "OrthographicCamera.h"
-#include "Texture.h"
 
+#include "Lambda/Renderer/OrthographicCamera.h"
+#include "Lambda/Renderer/Texture.h"
 
 namespace Lambda
 {

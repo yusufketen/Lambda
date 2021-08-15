@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Event.h"
+#include "Lambda/Events/Event.h"
 
 namespace Lambda {
-	class LAMBDA_API KeyEvent : public Event
+	class KeyEvent : public Event
 	{
 	public:
 		inline int GetKeyCode() const { return m_KeyCode; }
@@ -16,7 +16,7 @@ namespace Lambda {
 		int m_KeyCode;
 	};
 
-	class LAMBDA_API KeyPressedEvent : public KeyEvent
+	class KeyPressedEvent : public KeyEvent
 	{
 	public:
 		KeyPressedEvent(int keycode, int repeatCount)
@@ -36,7 +36,7 @@ namespace Lambda {
 		int m_RepeatCount;
 	};
 
-	class LAMBDA_API KeyReleasedEvent : public KeyEvent
+	class KeyReleasedEvent : public KeyEvent
 	{
 	public:
 		KeyReleasedEvent(int keycode)
@@ -53,7 +53,7 @@ namespace Lambda {
 
 	};
 
-	class LAMBDA_API KeyTypedEvent : public KeyEvent
+	class KeyTypedEvent : public KeyEvent
 	{
 	public:
 		KeyTypedEvent(int keycode)

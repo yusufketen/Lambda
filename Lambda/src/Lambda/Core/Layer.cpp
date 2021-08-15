@@ -1,5 +1,5 @@
 #include "lmpch.h"
-#include "Layer.h"
+#include "Lambda/Core/Layer.h"
 
 namespace Lambda {
 
@@ -7,10 +7,5 @@ namespace Lambda {
 		: m_DebugName(debugName)
 	{
 	}
-
-	Layer::~Layer()
-	{
-
-	}
-
+	
 }

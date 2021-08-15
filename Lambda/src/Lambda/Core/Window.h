@@ -5,8 +5,8 @@
 #include "Lambda/Core/Core.h"
 #include "Lambda/Events/Event.h"
 
-namespace Lambda {
-
+namespace Lambda
+{
 	struct WindowProps
 	{
 		std::string Title;
@@ -14,20 +14,22 @@ namespace Lambda {
 		unsigned int Height;
 
 		WindowProps(const std::string& title = "Lambda Engine",
-			unsigned int width = 1280,
-			unsigned int height = 720)
+		            unsigned int width = 1280,
+		            unsigned int height = 720)
 			: Title(title), Width(width), Height(height)
 		{
 		}
 	};
 
 	// Interface representing a desktop system based Window
-	class LAMBDA_API Window
+	class Window
 	{
 	public:
 		using EventCallbackFn = std::function<void(Event&)>;
 
-		virtual ~Window() {}
+		virtual ~Window()
+		{
+		}
 
 		virtual void OnUpdate() = 0;
 
@@ -41,7 +43,6 @@ namespace Lambda {
 
 		virtual void* GetNativeWindow() const = 0;
 
-		static Window* Create(const WindowProps& props = WindowProps());
+		static Scope<Window> Create(const WindowProps& props = WindowProps());
 	};
-
 }

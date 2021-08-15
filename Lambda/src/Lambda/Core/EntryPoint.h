@@ -1,4 +1,5 @@
 #pragma once
+#include "Lambda/Core/Core.h"
 
 #ifdef LM_PLATFORM_WINDOWS
 

@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Event.h"
+#include "Lambda/Events/Event.h"
 
 namespace Lambda {
 
-	class LAMBDA_API MouseMovedEvent : public Event
+	class MouseMovedEvent : public Event
 	{
 	public:
 		MouseMovedEvent(float x, float y)
@@ -26,7 +26,7 @@ namespace Lambda {
 		float m_MouseX, m_MouseY;
 	};
 
-	class LAMBDA_API MouseScrolledEvent : public Event
+	class MouseScrolledEvent : public Event
 	{
 	public:
 		MouseScrolledEvent(float xOffset, float yOffset)
@@ -48,7 +48,7 @@ namespace Lambda {
 		float m_XOffset, m_YOffset;
 	};
 
-	class LAMBDA_API MouseButtonEvent : public Event
+	class MouseButtonEvent : public Event
 	{
 	public:
 		inline int GetMouseButton() const { return m_Button; }
@@ -61,7 +61,7 @@ namespace Lambda {
 		int m_Button;
 	};
 
-	class LAMBDA_API MouseButtonPressedEvent : public MouseButtonEvent
+	class MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonPressedEvent(int button)
@@ -77,7 +77,7 @@ namespace Lambda {
 		EVENT_CLASS_TYPE(MouseButtonPressed)
 	};
 
-	class LAMBDA_API MouseButtonReleasedEvent : public MouseButtonEvent
+	class MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
 		MouseButtonReleasedEvent(int button)

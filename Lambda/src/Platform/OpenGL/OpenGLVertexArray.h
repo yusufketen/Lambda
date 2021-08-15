@@ -1,4 +1,5 @@
 ﻿#pragma once
+
 #include "Lambda/Renderer/VertexArray.h"
 
 namespace Lambda
@@ -10,14 +11,14 @@ namespace Lambda
 		OpenGLVertexArray();
 		virtual ~OpenGLVertexArray();
 
-		void Bind() const override;
-		void Unbind() const override;
+		virtual void Bind() const override;
+		virtual void Unbind() const override;
 
-		void AddVertexBuffer(const Ref<VertexBuffer>& vertexBuffer) override;
-		void SetIndexBuffer(const Ref<IndexBuffer>& indexBuffer) override;
+		virtual void AddVertexBuffer(const Ref<VertexBuffer>& vertexBuffer) override;
+		virtual void SetIndexBuffer(const Ref<IndexBuffer>& indexBuffer) override;
 
-		const std::vector<Ref<VertexBuffer>>& GetVertexBuffers() const override { return m_VertexBuffers; }
-		const Ref<IndexBuffer>& GetIndexBuffer() const override { return m_IndexBuffer; }
+		virtual const std::vector<Ref<VertexBuffer>>& GetVertexBuffers() const override { return m_VertexBuffers; }
+		virtual const Ref<IndexBuffer>& GetIndexBuffer() const override { return m_IndexBuffer; }
 
 	private:
 		uint32_t m_RendererID;

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "lmpch.h"
+
 #include "Lambda/Core/Core.h"
 
 namespace Lambda {
@@ -30,7 +31,7 @@ namespace Lambda {
 
 #define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
 
-	class LAMBDA_API Event
+	class Event
 	{
 	public:
 		bool Handled = false;

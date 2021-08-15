@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "RendererAPI.h"
+#include "Lambda/Renderer/RendererAPI.h"
 
 namespace Lambda
 {
@@ -33,6 +33,6 @@ namespace Lambda
 		}
 
 	private:
-		static RendererAPI* s_RendererAPI;
+		static Scope<RendererAPI> s_RendererAPI;
 	};
 }

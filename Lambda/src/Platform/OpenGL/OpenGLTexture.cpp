@@ -1,7 +1,8 @@
 ﻿#include "lmpch.h"
-#include "OpenGLTexture.h"
 
-#include "stb_image.h"
+#include "Platform/OpenGL/OpenGLTexture.h"
+
+#include <stb_image.h>
 
 namespace Lambda
 {

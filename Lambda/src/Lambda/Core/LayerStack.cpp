@@ -1,11 +1,7 @@
 #include "lmpch.h"
-#include "LayerStack.h"
+#include "Lambda/Core/LayerStack.h"
 
 namespace Lambda {
-
-	LayerStack::LayerStack()
-	{
-	}
 
 	LayerStack::~LayerStack()
 	{

@@ -1,5 +1,6 @@
 #include "lmpch.h"
-#include "WindowsWindow.h"
+
+#include "Platform/Windows/WindowsWindow.h"
 
 #include "Lambda/Events/ApplicationEvent.h"
 #include "Lambda/Events/MouseEvent.h"
@@ -17,9 +18,9 @@ namespace Lambda {
 		LM_CORE_ERROR("GLFW Error ({0}): {1}", error, description);
 	}
 
-	Window* Window::Create(const WindowProps& props)
+	Scope<Window> Window::Create(const WindowProps& props)
 	{
-		return new WindowsWindow(props);
+		return CreateScope<WindowsWindow>(props);
 	}
 
 	WindowsWindow::WindowsWindow(const WindowProps& props)
@@ -49,7 +50,6 @@ namespace Lambda {
 		if (s_GLFWWindowCount == 0)
 		{
 			LM_PROFILE_SCOPE("glfwInit");
-			LM_CORE_INFO("Initializing GLFW");
 			int success = glfwInit();
 			LM_CORE_ASSERT(success, "Could not intialize GLFW!");
 			glfwSetErrorCallback(GLFWErrorCallback);
@@ -61,7 +61,7 @@ namespace Lambda {
 			++s_GLFWWindowCount;
 		}
 		
-		m_Context = new OpenGLContext(m_Window);
+		m_Context = GraphicsContext::Create(m_Window);
 		m_Context->Init();
 
 		glfwSetWindowUserPointer(m_Window, &m_Data);
@@ -163,10 +163,10 @@ namespace Lambda {
 		LM_PROFILE_FUNCTION();
 
 		glfwDestroyWindow(m_Window);
+		--s_GLFWWindowCount;
 
-		if (--s_GLFWWindowCount == 0)
+		if (s_GLFWWindowCount == 0)
 		{
-			LM_CORE_INFO("Terminating GLFW");
 			glfwTerminate();
 		}
 	}
