@@ -88,9 +88,4 @@ namespace Lambda {
 		}
 	}
 
-	void ImGuiLayer::OnImGuiRender()
-	{
-
-	}
-
 }
