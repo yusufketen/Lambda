@@ -29,6 +29,7 @@ namespace Lambda
 
 		inline static Application& Get() { return *s_Instance; }
 
+		void Close();
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool OnWindowResize(WindowResizeEvent& e);

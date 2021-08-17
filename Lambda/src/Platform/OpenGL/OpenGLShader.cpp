@@ -58,7 +58,7 @@ namespace Lambda {
 		LM_PROFILE_FUNCTION();
 
 		std::string result;
-		std::ifstream in(filepath, std::ios::in, std::ios::binary);
+		std::ifstream in(filepath, std::ios::in | std::ios::binary);
 		if (in)
 		{
 			in.seekg(0, std::ios::end);
