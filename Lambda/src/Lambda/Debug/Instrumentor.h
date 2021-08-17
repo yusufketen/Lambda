@@ -202,7 +202,7 @@ namespace Lambda {
 	}
 }
 
-#define LM_PROFILE 1
+#define LM_PROFILE 0
 #if LM_PROFILE
 // Resolve which function signature macro will be used. Note that this only
 // is resolved when the (pre)compiler starts, so the syntax highlighting
