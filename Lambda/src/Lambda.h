@@ -23,6 +23,7 @@
 
 #include "Lambda/Renderer/Buffer.h"
 #include "Lambda/Renderer/Shader.h"
+#include "Lambda/Renderer/Framebuffer.h"
 #include "Lambda/Renderer/Texture.h"
 #include "Lambda/Renderer/VertexArray.h"
 

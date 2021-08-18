@@ -15,7 +15,7 @@ namespace Lambda
 	class Application
 	{
 	public:
-		Application();
+		Application(const std::string& name = "Lambda App");
 		virtual ~Application();
 
 		void Run();

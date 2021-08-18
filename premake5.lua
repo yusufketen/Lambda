@@ -148,3 +148,51 @@ project "Sandbox"
 			defines "LM_DIST"
 			runtime "Release"
 			optimize "on"
+
+			
+project "Lambda-Editor"
+	location "Lambda-Editor"
+	kind "ConsoleApp"
+	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
+
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	files
+	{
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp"
+	}
+
+	includedirs
+	{
+		"Lambda/vendor/spdlog/include",
+		"Lambda/src",
+		"Lambda/vendor",
+		"%{IncludeDir.glm}"
+	}
+
+	links
+	{
+		"Lambda"
+	}
+
+	filter "system:windows"
+		systemversion "latest"
+
+		filter "configurations:Debug"
+			defines "LM_DEBUG"
+			runtime "Debug"
+			symbols "on"
+
+		filter "configurations:Release"
+			defines "LM_RELEASE"
+			runtime "Release"
+			optimize "on"
+		
+		filter "configurations:Dist"
+			defines "LM_DIST"
+			runtime "Release"
+			optimize "on"
