@@ -1,6 +1,6 @@
 workspace "Lambda"
 	architecture "x86_64"
-	startproject "Sandbox"
+	startproject "Lambda-Editor"
 
 	configurations
 	{
