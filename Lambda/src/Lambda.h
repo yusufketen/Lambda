@@ -12,7 +12,7 @@
 
 #include "Lambda/Core/Input.h"
 #include "Lambda/Core/KeyCodes.h"
-#include "Lambda/Core/MouseButtonCodes.h"
+#include "Lambda/Core/MouseCodes.h"
 
 #include "Lambda/ImGui/ImGuiLayer.h"
 

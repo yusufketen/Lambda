@@ -29,7 +29,10 @@ namespace Lambda
 
 		inline static Application& Get() { return *s_Instance; }
 
+		ImGuiLayer* GetImGuiLayer() { return m_ImGuiLayer; }
+
 		void Close();
+
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool OnWindowResize(WindowResizeEvent& e);
