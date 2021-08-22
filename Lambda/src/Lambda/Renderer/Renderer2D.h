@@ -1,5 +1,6 @@
 ﻿#pragma once
 
+#include "Lambda/Renderer/Camera.h"
 #include "Lambda/Renderer/OrthographicCamera.h"
 #include "Lambda/Renderer/Texture.h"
 
@@ -11,7 +12,9 @@ namespace Lambda
 		static void Init();
 		static void Shutdown();
 
+		static void BeginScene(const Camera& camera, const glm::mat4& transform);
 		static void BeginScene(const OrthographicCamera& camera);
+
 		static void EndScene();
 		static void Flush();
 

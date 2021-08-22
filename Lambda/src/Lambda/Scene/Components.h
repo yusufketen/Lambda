@@ -2,6 +2,7 @@
 
 
 #include "glm/glm.hpp"
+#include "Lambda/Renderer/Camera.h"
 
 namespace Lambda
 {
@@ -35,5 +36,16 @@ namespace Lambda
 		SpriteRendererComponent(const glm::vec4& color)
 			: Color(color){}
 
+	};
+
+	struct CameraComponent
+	{
+		Lambda::Camera Camera;
+		bool Primary = true;
+
+		CameraComponent() = default;
+		CameraComponent(const CameraComponent&) = default;
+		CameraComponent(const glm::mat4 & projection)
+			: Camera(projection) {}
 	};
 }
