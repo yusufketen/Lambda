@@ -1426,6 +1426,7 @@
     <ClInclude Include="src\Lambda\Scene\Components.h" />
     <ClInclude Include="src\Lambda\Scene\Entity.h" />
     <ClInclude Include="src\Lambda\Renderer\Camera.h" />
+    <ClInclude Include="src\Lambda\Scene\SceneCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Lambda\Core\Application.cpp">
@@ -1518,5 +1519,6 @@
     <ClCompile Include="src\Lambda\Scene\Scene.cpp" />
     <ClCompile Include="src\Lambda\Scene\Entity.cpp" />
     <ClCompile Include="src\Lambda\Renderer\Camera.cpp" />
+    <ClCompile Include="src\Lambda\Scene\SceneCamera.cpp" />
   </ItemGroup>
 </Project>

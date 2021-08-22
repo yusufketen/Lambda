@@ -2,7 +2,7 @@
 
 
 #include "glm/glm.hpp"
-#include "Lambda/Renderer/Camera.h"
+#include "Lambda/Scene/SceneCamera.h"
 
 namespace Lambda
 {
@@ -40,12 +40,11 @@ namespace Lambda
 
 	struct CameraComponent
 	{
-		Lambda::Camera Camera;
+		SceneCamera Camera;
 		bool Primary = true;
+		bool FixedAspectRatio = false;
 
 		CameraComponent() = default;
 		CameraComponent(const CameraComponent&) = default;
-		CameraComponent(const glm::mat4 & projection)
-			: Camera(projection) {}
 	};
 }
