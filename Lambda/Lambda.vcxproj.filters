@@ -84,7 +84,7 @@
     <ClInclude Include="src\Lambda\Core\Log.h">
       <Filter>src\Lambda\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Lambda\Core\MouseButtonCodes.h">
+    <ClInclude Include="src\Lambda\Core\MouseCodes.h">
       <Filter>src\Lambda\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Lambda\Core\Timestep.h">
@@ -161,9 +161,6 @@
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
       <Filter>src\Platform\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\Windows\WindowsInput.h">
-      <Filter>src\Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>src\Platform\Windows</Filter>
