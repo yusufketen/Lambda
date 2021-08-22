@@ -2,7 +2,7 @@
 
 #include "lmpch.h"
 
-#include "Lambda/Core/Core.h"
+#include "Lambda/Core/Base.h"
 #include "Lambda/Events/Event.h"
 
 namespace Lambda

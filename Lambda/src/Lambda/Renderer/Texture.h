@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include <string>
-#include "Lambda/Core/Core.h"
+#include "Lambda/Core/Base.h"
 
 namespace Lambda
 {

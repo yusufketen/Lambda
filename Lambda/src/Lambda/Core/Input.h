@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Lambda/Core/Core.h"
+#include "Lambda/Core/Base.h"
 #include "Lambda/Core/KeyCodes.h"
 #include "Lambda/Core/MouseCodes.h"
 

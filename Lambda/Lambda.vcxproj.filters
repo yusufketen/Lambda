@@ -63,7 +63,7 @@
     <ClInclude Include="src\Lambda\Core\Application.h">
       <Filter>src\Lambda\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Lambda\Core\Core.h">
+    <ClInclude Include="src\Lambda\Core\Base.h">
       <Filter>src\Lambda\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Lambda\Core\EntryPoint.h">

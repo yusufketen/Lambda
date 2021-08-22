@@ -146,7 +146,7 @@
   <ItemGroup>
     <ClInclude Include="src\Lambda.h" />
     <ClInclude Include="src\Lambda\Core\Application.h" />
-    <ClInclude Include="src\Lambda\Core\Core.h" />
+    <ClInclude Include="src\Lambda\Core\Base.h" />
     <ClInclude Include="src\Lambda\Core\EntryPoint.h" />
     <ClInclude Include="src\Lambda\Core\Input.h" />
     <ClInclude Include="src\Lambda\Core\KeyCodes.h" />
