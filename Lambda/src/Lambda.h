@@ -16,6 +16,10 @@
 
 #include "Lambda/ImGui/ImGuiLayer.h"
 
+#include "Lambda/Scene/Scene.h"
+#include "Lambda/Scene/Entity.h"
+#include "Lambda/Scene/Components.h"
+
 // --- Renderer ------------------------------
 #include "Lambda/Renderer/Renderer.h"
 #include "Lambda/Renderer/Renderer2D.h"

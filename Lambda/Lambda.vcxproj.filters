@@ -114,6 +114,9 @@
     <ClInclude Include="src\Lambda\Renderer\Buffer.h">
       <Filter>src\Lambda\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Lambda\Renderer\Framebuffer.h">
+      <Filter>src\Lambda\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Lambda\Renderer\GraphicsContext.h">
       <Filter>src\Lambda\Renderer</Filter>
     </ClInclude>
@@ -148,6 +151,9 @@
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLFramebuffer.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
@@ -1416,8 +1422,9 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Lambda\Renderer\Framebuffer.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLFramebuffer.h" />
+    <ClInclude Include="src\Lambda\Scene\Scene.h" />
+    <ClInclude Include="src\Lambda\Scene\Components.h" />
+    <ClInclude Include="src\Lambda\Scene\Entity.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Lambda\Core\Application.cpp">
@@ -1439,6 +1446,9 @@
       <Filter>src\Lambda\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Lambda\Renderer\Buffer.cpp">
+      <Filter>src\Lambda\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Lambda\Renderer\Framebuffer.cpp">
       <Filter>src\Lambda\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Lambda\Renderer\GraphicsContext.cpp">
@@ -1477,6 +1487,9 @@
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLFramebuffer.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
@@ -1501,7 +1514,7 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Lambda\Renderer\Framebuffer.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLFramebuffer.cpp" />
+    <ClCompile Include="src\Lambda\Scene\Scene.cpp" />
+    <ClCompile Include="src\Lambda\Scene\Entity.cpp" />
   </ItemGroup>
 </Project>

@@ -23,6 +23,7 @@ IncludeDir["Glad"] = "Lambda/vendor/Glad/include"
 IncludeDir["ImGui"] = "Lambda/vendor/imgui"
 IncludeDir["glm"] = "Lambda/vendor/glm"
 IncludeDir["stb_image"] = "Lambda/vendor/stb_image"
+IncludeDir["entt"] = "Lambda/vendor/entt/include"
 
 group "Dependencies"
 	include "Lambda/vendor/GLFW"
@@ -67,7 +68,8 @@ project "Lambda"
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.stb_image}"
+		"%{IncludeDir.stb_image}",
+		"%{IncludeDir.entt}"
 	}
 
 	links 
@@ -171,7 +173,8 @@ project "Lambda-Editor"
 		"Lambda/vendor/spdlog/include",
 		"Lambda/src",
 		"Lambda/vendor",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}"
 	}
 
 	links
