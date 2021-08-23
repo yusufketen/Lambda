@@ -5,6 +5,8 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
+#include "GLFW/include/GLFW/glfw3.h"
+
 namespace Lambda
 {
 	EditorLayer::EditorLayer()
@@ -38,6 +40,8 @@ namespace Lambda
 		m_SecondCamera = m_ActiveScene->CreateEntity("Clip-Space Entity");
 		auto& cc = m_SecondCamera.AddComponent<CameraComponent>();
 		cc.Primary = false;
+
+		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
 	}
 
 	void EditorLayer::OnDetach()
@@ -50,8 +54,8 @@ namespace Lambda
 		LM_PROFILE_FUNCTION();
 
 		// Resize
-		if(FramebufferSpecification spec = m_Framebuffer->GetSpecification(); 
-			m_ViewportSize.x > 0.0f && m_ViewportSize.y  > 0.0f && 
+		if (FramebufferSpecification spec = m_Framebuffer->GetSpecification();
+			m_ViewportSize.x > 0.0f && m_ViewportSize.y > 0.0f &&
 			(spec.Width != m_ViewportSize.x || spec.Height != m_ViewportSize.y))
 		{
 			m_Framebuffer->Resize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
@@ -59,7 +63,6 @@ namespace Lambda
 
 			m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 		}
-
 
 
 		// Update
@@ -133,9 +136,20 @@ namespace Lambda
 			ImGui::EndMenuBar();
 		}
 
+		m_SceneHierarchyPanel.OnImGuiRender();
+
 		ImGui::Begin("Settings");
-		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate,
-		            ImGui::GetIO().Framerate);
+
+		ImGui::Text("%.1f FPS - %.3f ms/frame", ImGui::GetIO().Framerate,
+		            1000.0f / ImGui::GetIO().Framerate);
+
+		if (ImGui::Checkbox("VSync", &m_VSyncActive))
+		{
+			glfwSwapInterval(m_VSyncActive);
+		}
+
+		ImGui::Separator();
+
 		auto stats = Renderer2D::GetStats();
 		ImGui::Text("Renderer2D Stats:");
 		ImGui::Text("Draw Calls: %d", stats.DrawCalls);
@@ -154,9 +168,10 @@ namespace Lambda
 			ImGui::Separator();
 		}
 
-		ImGui::DragFloat3("Camera Transform", glm::value_ptr(m_CameraEntity.GetComponent<TransformComponent>().Transform[3]));
+		ImGui::DragFloat3("Camera Transform",
+		                  glm::value_ptr(m_CameraEntity.GetComponent<TransformComponent>().Transform[3]));
 
-		if(ImGui::Checkbox("Camera A", &m_PrimaryCamera))
+		if (ImGui::Checkbox("Camera A", &m_PrimaryCamera))
 		{
 			m_CameraEntity.GetComponent<CameraComponent>().Primary = m_PrimaryCamera;
 			m_SecondCamera.GetComponent<CameraComponent>().Primary = !m_PrimaryCamera;
@@ -165,10 +180,11 @@ namespace Lambda
 		{
 			auto& camera = m_SecondCamera.GetComponent<CameraComponent>().Camera;
 			float orthoSize = camera.GetOrthographicSize();
-			if (ImGui::DragFloat("Second Camera Ortho Size", &orthoSize))
+			ImGui::Text("Second Camera Ortho Size");
+			if (ImGui::DragFloat("", &orthoSize))
 				camera.SetOrthographicSize(orthoSize);
 		}
-		
+
 		ImGui::End();
 
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2{0, 0});
@@ -177,9 +193,9 @@ namespace Lambda
 		m_ViewportFocused = ImGui::IsWindowFocused();
 		m_ViewportHovered = ImGui::IsWindowHovered();
 		Application::Get().GetImGuiLayer()->BlockEvents(!m_ViewportFocused || !m_ViewportHovered);
-		
+
 		ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
-		m_ViewportSize = { viewportPanelSize.x, viewportPanelSize.y };
+		m_ViewportSize = {viewportPanelSize.x, viewportPanelSize.y};
 		const uint32_t textureID = m_Framebuffer->GetColorAttachmentRendererID();
 		ImGui::Image(reinterpret_cast<void*>(textureID), ImVec2{m_ViewportSize.x, m_ViewportSize.y}, ImVec2{0, 1},
 		             ImVec2{1, 0});
