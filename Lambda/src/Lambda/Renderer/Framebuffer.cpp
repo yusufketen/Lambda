@@ -1,7 +1,7 @@
 ﻿#include "lmpch.h"
-#include "Framebuffer.h"
+#include "Lambda/Renderer/Framebuffer.h"
 
-#include "Renderer.h"
+#include "Lambda/Renderer/Renderer.h"
 #include "Platform/OpenGL/OpenGLFramebuffer.h"
 
 namespace Lambda
