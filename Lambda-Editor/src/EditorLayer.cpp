@@ -60,34 +60,27 @@ namespace Lambda
 		{
 			m_Framebuffer->Resize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 			m_CameraController.OnResize(m_ViewportSize.x, m_ViewportSize.y);
-
 			m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 		}
-
 
 		// Update
 		if (m_ViewportFocused)
 			m_CameraController.OnUpdate(ts);
 
-
 		// Render
 		Renderer2D::ResetStats();
-
 		m_Framebuffer->Bind();
+
 		RenderCommand::SetClearColor({0.1f, 0.1f, 0.1f, 1});
 		RenderCommand::Clear();
 
-
 		m_ActiveScene->OnUpdate(ts);
-
-
 		m_Framebuffer->Unbind();
 	}
 
 	void EditorLayer::OnImGuiRender()
 	{
 		LM_PROFILE_FUNCTION();
-
 
 		static bool dockspaceOpen = true;
 		static bool opt_fullscreen_persistant = true;
@@ -181,7 +174,7 @@ namespace Lambda
 			auto& camera = m_SecondCamera.GetComponent<CameraComponent>().Camera;
 			float orthoSize = camera.GetOrthographicSize();
 			ImGui::Text("Second Camera Ortho Size");
-			if (ImGui::DragFloat("", &orthoSize))
+			if (ImGui::DragFloat("", &orthoSize, 0.1f))
 				camera.SetOrthographicSize(orthoSize);
 		}
 
