@@ -18,6 +18,9 @@ namespace Lambda {
 		virtual void OnImGuiRender() override;
 		void OnEvent(Event& e) override;
 	private:
+		bool OnMouseButtonPressed(MouseButtonPressedEvent& e);
+
+	private:
 		Lambda::OrthographicCameraController m_CameraController;
 
 		// Temp

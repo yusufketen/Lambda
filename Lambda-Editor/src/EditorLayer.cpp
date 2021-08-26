@@ -209,5 +209,18 @@ namespace Lambda
 	void EditorLayer::OnEvent(Event& e)
 	{
 		m_CameraController.OnEvent(e);
+		EventDispatcher dispatcher(e);
+		dispatcher.Dispatch<MouseButtonPressedEvent>(LM_BIND_EVENT_FN(EditorLayer::OnMouseButtonPressed));
+
+	}
+
+	bool EditorLayer::OnMouseButtonPressed(MouseButtonPressedEvent& e)
+	{
+		if(e.GetMouseButton() == Mouse::ButtonLeft)
+		{
+			if(m_ViewportHovered)
+				m_SceneHierarchyPanel.SetSelectedEntity(m_HoveredEntity);
+		}
+		return false;
 	}
 }
