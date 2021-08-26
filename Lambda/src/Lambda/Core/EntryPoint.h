@@ -5,7 +5,7 @@
 
 extern Lambda::Application* Lambda::CreateApplication();
 
-int main()
+int main(int argc, char** argv)
 {
 	Lambda::Log::Init();
 

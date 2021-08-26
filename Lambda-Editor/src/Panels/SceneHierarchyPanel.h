@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Lambda/Core/Base.h"
-#include "Lambda/Core/Log.h"
 #include "Lambda/Scene/Scene.h"
 #include "Lambda/Scene/Entity.h"
 

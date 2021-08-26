@@ -7,6 +7,7 @@
 #include "Lambda/Core/Application.h"
 #include "Lambda/Core/Layer.h"
 #include "Lambda/Core/Log.h"
+#include "Lambda/Core/Assert.h"
 
 #include "Lambda/Core/Timestep.h"
 

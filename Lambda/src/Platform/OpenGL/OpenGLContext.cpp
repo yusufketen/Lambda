@@ -27,14 +27,8 @@ namespace Lambda {
 		LM_CORE_INFO("  Renderer: {0}", glGetString(GL_RENDERER));
 		LM_CORE_INFO("  Version: {0}", glGetString(GL_VERSION));
 
-#ifdef LM_ENABLE_ASSERTS
-		int versionMajor;
-		int versionMinor;
-		glGetIntegerv(GL_MAJOR_VERSION, &versionMajor);
-		glGetIntegerv(GL_MINOR_VERSION, &versionMinor);
 
-		LM_CORE_ASSERT(versionMajor > 4 || (versionMajor == 4 && versionMinor >= 5), "Lambda requires at least OpenGL version 4.5!");
-#endif
+		LM_CORE_ASSERT(GLVersion.major > 4 || (GLVersion.major == 4 && GLVersion.minor >= 5), "Lambda requires at least OpenGL version 4.5!");
 	}
 
 	void OpenGLContext::SwapBuffers()

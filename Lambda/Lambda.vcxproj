@@ -76,12 +76,12 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>lmpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;LM_BUILD_DLL;GLFW_INCLUDE_NONE;LM_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;LM_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb_image;vendor\entt\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <MinimalRebuild>false</MinimalRebuild>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
@@ -98,14 +98,14 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>lmpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;LM_BUILD_DLL;GLFW_INCLUDE_NONE;LM_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;LM_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb_image;vendor\entt\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
@@ -123,14 +123,14 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>lmpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;LM_BUILD_DLL;GLFW_INCLUDE_NONE;LM_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;LM_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;vendor\glm;vendor\stb_image;vendor\entt\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
@@ -144,12 +144,9 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Lambda\Renderer\Camera.h" />
-    <ClInclude Include="src\Lambda\Scene\Components.h" />
-    <ClInclude Include="src\Lambda\Scene\Entity.h" />
-    <ClInclude Include="src\Lambda\Scene\Scene.h" />
     <ClInclude Include="src\Lambda.h" />
     <ClInclude Include="src\Lambda\Core\Application.h" />
+    <ClInclude Include="src\Lambda\Core\Assert.h" />
     <ClInclude Include="src\Lambda\Core\Base.h" />
     <ClInclude Include="src\Lambda\Core\EntryPoint.h" />
     <ClInclude Include="src\Lambda\Core\Input.h" />
@@ -158,6 +155,7 @@
     <ClInclude Include="src\Lambda\Core\LayerStack.h" />
     <ClInclude Include="src\Lambda\Core\Log.h" />
     <ClInclude Include="src\Lambda\Core\MouseCodes.h" />
+    <ClInclude Include="src\Lambda\Core\PlatformDetection.h" />
     <ClInclude Include="src\Lambda\Core\Timestep.h" />
     <ClInclude Include="src\Lambda\Core\Window.h" />
     <ClInclude Include="src\Lambda\Debug\Instrumentor.h" />
@@ -167,6 +165,7 @@
     <ClInclude Include="src\Lambda\Events\MouseEvent.h" />
     <ClInclude Include="src\Lambda\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Lambda\Renderer\Buffer.h" />
+    <ClInclude Include="src\Lambda\Renderer\Camera.h" />
     <ClInclude Include="src\Lambda\Renderer\Framebuffer.h" />
     <ClInclude Include="src\Lambda\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Lambda\Renderer\OrthographicCamera.h" />
@@ -178,6 +177,9 @@
     <ClInclude Include="src\Lambda\Renderer\Shader.h" />
     <ClInclude Include="src\Lambda\Renderer\Texture.h" />
     <ClInclude Include="src\Lambda\Renderer\VertexArray.h" />
+    <ClInclude Include="src\Lambda\Scene\Components.h" />
+    <ClInclude Include="src\Lambda\Scene\Entity.h" />
+    <ClInclude Include="src\Lambda\Scene\Scene.h" />
     <ClInclude Include="src\Lambda\Scene\SceneCamera.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
@@ -606,16 +608,15 @@
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Lambda\Renderer\Camera.cpp" />
-    <ClCompile Include="src\Lambda\Scene\Entity.cpp" />
-    <ClCompile Include="src\Lambda\Scene\Scene.cpp" />
     <ClCompile Include="src\Lambda\Core\Application.cpp" />
     <ClCompile Include="src\Lambda\Core\Layer.cpp" />
     <ClCompile Include="src\Lambda\Core\LayerStack.cpp" />
     <ClCompile Include="src\Lambda\Core\Log.cpp" />
+    <ClCompile Include="src\Lambda\Core\Window.cpp" />
     <ClCompile Include="src\Lambda\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Lambda\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Lambda\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Lambda\Renderer\Camera.cpp" />
     <ClCompile Include="src\Lambda\Renderer\Framebuffer.cpp" />
     <ClCompile Include="src\Lambda\Renderer\GraphicsContext.cpp" />
     <ClCompile Include="src\Lambda\Renderer\OrthographicCamera.cpp" />
@@ -627,6 +628,8 @@
     <ClCompile Include="src\Lambda\Renderer\Shader.cpp" />
     <ClCompile Include="src\Lambda\Renderer\Texture.cpp" />
     <ClCompile Include="src\Lambda\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\Lambda\Scene\Entity.cpp" />
+    <ClCompile Include="src\Lambda\Scene\Scene.cpp" />
     <ClCompile Include="src\Lambda\Scene\SceneCamera.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />

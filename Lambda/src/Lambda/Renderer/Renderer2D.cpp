@@ -52,7 +52,6 @@ namespace Lambda
 
 		s_Data.QuadVertexArray = VertexArray::Create();
 
-
 		s_Data.QuadVertexBuffer = VertexBuffer::Create(s_Data.MaxVertices * sizeof(QuadVertex));
 		s_Data.QuadVertexBuffer->SetLayout({
 			{ShaderDataType::Float3, "a_Position" },
@@ -210,7 +209,7 @@ namespace Lambda
 
 		for (uint32_t i = 1; i < s_Data.TextureSlotIndex; i++)
 		{
-			if (*s_Data.TextureSlots[i].get() == *texture.get())
+			if (*s_Data.TextureSlots[i] == *texture.get())
 			{
 				textureIndex = static_cast<float>(i);
 				break;

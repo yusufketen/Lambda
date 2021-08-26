@@ -1,5 +1,5 @@
 #include <Lambda.h>
-
+#include <Lambda/Core/EntryPoint.h>
 #include "EditorLayer.h"
 
 namespace Lambda {

@@ -7,7 +7,7 @@
 
 #include "Lambda/Core/Input.h"
 
-#include "GLFW/glfw3.h"
+#include <GLFW/glfw3.h>
 
 namespace Lambda {
 
@@ -16,19 +16,16 @@ namespace Lambda {
 	Application::Application(const std::string& name)
 	{
 		LM_PROFILE_FUNCTION();
-		
+
 		LM_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
-
 		m_Window = Window::Create(WindowProps(name));
 		m_Window->SetEventCallback(LM_BIND_EVENT_FN(Application::OnEvent));
-		//m_Window->SetVSync(false); // Uncomment to measure fps
 
 		Renderer::Init();
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
-
 	}
 
 	Application::~Application()
@@ -54,6 +51,11 @@ namespace Lambda {
 		layer->OnAttach();
 	}
 
+	void Application::Close()
+	{
+		m_Running = false;
+	}
+
 	void Application::OnEvent(Event& e)
 	{
 		LM_PROFILE_FUNCTION();
@@ -62,11 +64,11 @@ namespace Lambda {
 		dispatcher.Dispatch<WindowCloseEvent>(LM_BIND_EVENT_FN(Application::OnWindowClose));
 		dispatcher.Dispatch<WindowResizeEvent>(LM_BIND_EVENT_FN(Application::OnWindowResize));
 
-		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
+		for (auto it = m_LayerStack.rbegin(); it != m_LayerStack.rend(); ++it)
 		{
 			if (e.Handled)
 				break;
-			(*--it)->OnEvent(e);
+			(*it)->OnEvent(e);
 		}
 	}
 
@@ -78,14 +80,15 @@ namespace Lambda {
 		{
 			LM_PROFILE_SCOPE("RunLoop");
 
-			float time = static_cast<float>(glfwGetTime()); // Platform::GetTime()
+			float time = (float)glfwGetTime();
 			Timestep timestep = time - m_LastFrameTime;
 			m_LastFrameTime = time;
 
-			if(!m_Minimized)
+			if (!m_Minimized)
 			{
 				{
 					LM_PROFILE_SCOPE("LayerStack OnUpdate");
+
 					for (Layer* layer : m_LayerStack)
 						layer->OnUpdate(timestep);
 				}
@@ -98,15 +101,10 @@ namespace Lambda {
 						layer->OnImGuiRender();
 				}
 				m_ImGuiLayer->End();
-
-				m_Window->OnUpdate();
 			}
-		}
-	}
 
-	void Application::Close()
-	{
-		m_Running = false;
+			m_Window->OnUpdate();
+		}
 	}
 
 	bool Application::OnWindowClose(WindowCloseEvent& e)
@@ -119,13 +117,16 @@ namespace Lambda {
 	{
 		LM_PROFILE_FUNCTION();
 
-		if(e.GetWidth() == 0 || e.GetHeight() == 0)
+		if (e.GetWidth() == 0 || e.GetHeight() == 0)
 		{
 			m_Minimized = true;
 			return false;
 		}
+
 		m_Minimized = false;
 		Renderer::OnWindowResize(e.GetWidth(), e.GetHeight());
+
 		return false;
 	}
+
 }

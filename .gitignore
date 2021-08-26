@@ -24,3 +24,5 @@ Sandbox/LambdaProfile-Shutdown.json
 **.vcxproj.filters
 **.vcxproj.user
 **/imgui.ini
+Lambda/vendor/GLFW
+Lambda/vendor/imgui

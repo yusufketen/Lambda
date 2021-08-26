@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Lambda/Core/Base.h"
 
 #include "Lambda/Core/Window.h"
@@ -10,34 +11,34 @@
 
 #include "Lambda/ImGui/ImGuiLayer.h"
 
-namespace Lambda
-{
+int main(int argc, char** argv);
+
+namespace Lambda {
+
 	class Application
 	{
 	public:
 		Application(const std::string& name = "Lambda App");
 		virtual ~Application();
 
-		void Run();
-
 		void OnEvent(Event& e);
 
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* layer);
 
-		inline Window& GetWindow() { return *m_Window; }
-
-		inline static Application& Get() { return *s_Instance; }
-
-		ImGuiLayer* GetImGuiLayer() { return m_ImGuiLayer; }
+		Window& GetWindow() { return *m_Window; }
 
 		void Close();
 
+		ImGuiLayer* GetImGuiLayer() { return m_ImGuiLayer; }
+
+		static Application& Get() { return *s_Instance; }
 	private:
+		void Run();
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool OnWindowResize(WindowResizeEvent& e);
 	private:
-		std::unique_ptr<Window> m_Window;
+		Scope<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		bool m_Minimized = false;
@@ -45,8 +46,10 @@ namespace Lambda
 		float m_LastFrameTime = 0.0f;
 	private:
 		static Application* s_Instance;
+		friend int ::main(int argc, char** argv);
 	};
 
-	// Should be defined in CLIENT
+	// To be defined in CLIENT
 	Application* CreateApplication();
+
 }
