@@ -17,6 +17,10 @@ namespace Lambda
 		glm::vec2 TexCoord;
 		float TexIndex;
 		float TilingFactor;
+
+		// Editor-only
+
+		int EntityID;
 	};
 
 	struct Renderer2DData
@@ -54,12 +58,13 @@ namespace Lambda
 
 		s_Data.QuadVertexBuffer = VertexBuffer::Create(s_Data.MaxVertices * sizeof(QuadVertex));
 		s_Data.QuadVertexBuffer->SetLayout({
-			{ShaderDataType::Float3, "a_Position" },
-			{ShaderDataType::Float4, "a_Color" },
-			{ShaderDataType::Float2, "a_TexCoord" },
-			{ShaderDataType::Float, "a_TexIndex" },
-			{ShaderDataType::Float, "a_TilingFactor" }
-			});
+			{ ShaderDataType::Float3,	"a_Position"		},
+			{ ShaderDataType::Float4,	"a_Color"			},
+			{ ShaderDataType::Float2,	"a_TexCoord"		},
+			{ ShaderDataType::Float,	"a_TexIndex"		},
+			{ ShaderDataType::Float,	"a_TilingFactor"	},
+			{ ShaderDataType::Int,		"a_EntityID"	}
+		});
 
 		s_Data.QuadVertexArray->AddVertexBuffer(s_Data.QuadVertexBuffer);
 
@@ -175,7 +180,7 @@ namespace Lambda
 		s_Data.TextureSlotIndex = 1;
 	}
 
-	void Renderer2D::DrawQuad(const glm::mat4& transform, const glm::vec4& color)
+	void Renderer2D::DrawQuad(const glm::mat4& transform, const glm::vec4& color, int entityID)
 	{
 		LM_PROFILE_FUNCTION();
 
@@ -192,6 +197,7 @@ namespace Lambda
 			s_Data.QuadVertexBufferPtr->TexCoord = s_TexCoords[i];
 			s_Data.QuadVertexBufferPtr->TexIndex = texIndex;
 			s_Data.QuadVertexBufferPtr->TilingFactor = tilingFactor;
+			s_Data.QuadVertexBufferPtr->EntityID = entityID;
 			s_Data.QuadVertexBufferPtr++;
 		}
 		s_Data.QuadIndexCount += 6;
@@ -200,7 +206,7 @@ namespace Lambda
 	}
 
 	void Renderer2D::DrawQuad(const glm::mat4& transform, const Ref<Texture2D> texture, float tilingFactor,
-		const glm::vec4& tintColor)
+		const glm::vec4& tintColor, int entityID)
 	{
 		if (s_Data.QuadIndexCount >= Renderer2DData::MaxIndices)
 			FlushAndReset();
@@ -230,6 +236,7 @@ namespace Lambda
 			s_Data.QuadVertexBufferPtr->TexCoord = s_TexCoords[i];
 			s_Data.QuadVertexBufferPtr->TexIndex = textureIndex;
 			s_Data.QuadVertexBufferPtr->TilingFactor = tilingFactor;
+			s_Data.QuadVertexBufferPtr->EntityID = entityID;
 			s_Data.QuadVertexBufferPtr++;
 		}
 		s_Data.QuadIndexCount += 6;
@@ -302,6 +309,11 @@ namespace Lambda
 			* glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
 
 		DrawQuad(transform, texture, tilingFactor, tintColor);
+	}
+
+	void Renderer2D::DrawSprite(const glm::mat4& transform, SpriteRendererComponent& src, int entityID)
+	{
+		DrawQuad(transform, src.Color, entityID);
 	}
 
 	void Renderer2D::ResetStats()
