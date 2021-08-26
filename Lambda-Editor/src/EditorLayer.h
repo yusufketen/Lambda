@@ -26,9 +26,10 @@ namespace Lambda {
 		Ref<Framebuffer> m_Framebuffer;
 
 		Ref<Scene> m_ActiveScene;
-		Entity m_SquareEntity;
 		Entity m_CameraEntity;
 		Entity m_SecondCamera;
+
+		Entity m_HoveredEntity;
 
 		bool m_PrimaryCamera = true;
 		bool m_VSyncActive = true;
@@ -42,6 +43,7 @@ namespace Lambda {
 
 		// Panels
 		SceneHierarchyPanel m_SceneHierarchyPanel;
+		
 	};
 
 }
