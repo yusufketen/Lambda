@@ -10,3 +10,6 @@
 [submodule "Lambda/vendor/glm"]
 	path = Lambda/vendor/glm
 	url = https://github.com/g-truc/glm
+[submodule "Lambda/vendor/yaml-cpp"]
+	path = Lambda/vendor/yaml-cpp
+	url = https://github.com/thecherno/yaml-cpp

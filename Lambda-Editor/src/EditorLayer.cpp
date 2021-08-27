@@ -6,6 +6,8 @@
 
 #include "GLFW/include/GLFW/glfw3.h"
 
+#include "Lambda/Scene/SceneSerializer.h"
+
 namespace Lambda
 {
 	EditorLayer::EditorLayer()
@@ -27,6 +29,8 @@ namespace Lambda
 
 		m_ActiveScene = CreateRef<Scene>();
 
+#if 0
+		// Entities
 		auto redSquare = m_ActiveScene->CreateEntity("Red Square");
 		redSquare.AddComponent<SpriteRendererComponent>(glm::vec4{ 1.0f, 0.0f, 0.0f, 1.0f });
 
@@ -44,8 +48,10 @@ namespace Lambda
 		m_SecondCamera = m_ActiveScene->CreateEntity("Camera B");
 		auto& cc = m_SecondCamera.AddComponent<CameraComponent>();
 		cc.Primary = false;
-		
+#endif
+
 		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
+
 	}
 
 	void EditorLayer::OnDetach()
@@ -149,6 +155,19 @@ namespace Lambda
 		{
 			if (ImGui::BeginMenu("File"))
 			{
+				if (ImGui::MenuItem("Serialize"))
+				{
+
+					SceneSerializer serializer(m_ActiveScene);
+					serializer.Serialize("assets/scenes/Example.lambda");
+				}
+
+				if (ImGui::MenuItem("Deserialize"))
+				{
+					SceneSerializer serializer(m_ActiveScene);
+					serializer.Deserialize("assets/scenes/Example.lambda");
+				}
+
 				if (ImGui::MenuItem("Exit")) Application::Get().Close();
 				ImGui::EndMenu();
 			}
