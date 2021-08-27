@@ -13,12 +13,12 @@ namespace Lambda
 {
 	static void OnTransformConstruct(entt::registry& registry, entt::entity entity)
 	{
-		
+
 	}
 
 	Scene::Scene()
 	{
-		
+
 	}
 
 	Scene::~Scene()
@@ -35,6 +35,11 @@ namespace Lambda
 		return entity;
 	}
 
+	void Scene::DestroyEntity(Entity entity)
+	{
+		m_Registry.destroy(entity);
+	}
+
 	void Scene::OnUpdate(Timestep ts)
 	{
 
@@ -46,7 +51,7 @@ namespace Lambda
 			{
 				auto& [transform, camera] = view.get<TransformComponent, CameraComponent>(entity);
 
-				if(camera.Primary)
+				if (camera.Primary)
 				{
 					mainCamera = &camera.Camera;
 					cameraTransform = transform.GetTransform();
@@ -55,7 +60,7 @@ namespace Lambda
 			}
 		}
 
-		if(mainCamera)
+		if (mainCamera)
 		{
 			Renderer2D::BeginScene(*mainCamera, cameraTransform);
 
@@ -70,7 +75,7 @@ namespace Lambda
 			Renderer2D::EndScene();
 		}
 
-		
+
 	}
 
 	void Scene::OnViewportResize(uint32_t width, uint32_t height)
@@ -83,8 +88,47 @@ namespace Lambda
 		for (auto entity : view)
 		{
 			auto& cameraComponent = view.get<CameraComponent>(entity);
-			if(!cameraComponent.FixedAspectRatio)
+			if (!cameraComponent.FixedAspectRatio)
 				cameraComponent.Camera.SetViewportSize(width, height);
 		}
 	}
+
+	template <typename T>
+	void Scene::OnComponentAdded(Entity entity, T& component)
+	{
+		static_assert(false);
+	}
+
+	template<>
+	void Scene::OnComponentAdded<TransformComponent>(Entity entity, TransformComponent& component)
+	{
+
+	}
+
+	template<>
+	void Scene::OnComponentAdded<CameraComponent>(Entity entity, CameraComponent& component)
+	{
+		component.Camera.SetViewportSize(m_ViewportWidth, m_ViewportHeight);
+	}
+
+	template<>
+	void Scene::OnComponentAdded<SpriteRendererComponent>(Entity entity, SpriteRendererComponent& component)
+	{
+
+	}
+
+	template<>
+	void Scene::OnComponentAdded<TagComponent>(Entity entity, TagComponent& component)
+	{
+
+	}
+
+	/*
+	template<>
+	void Scene::OnComponentAdded<NativeScriptComponent>(Entity entity, NativeScriptComponent& component)
+	{
+
+	}
+	*/
+
 }
