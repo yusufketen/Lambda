@@ -1,13 +1,9 @@
 # Binaries
 **/bin/
-!vendor/bin/premake/
 bin-int/
 
 # Files
 *.user
-
-# ImGui Temp file
-SandBox/imgui.ini
 
 # Lambda Log files
 *.log
@@ -23,6 +19,6 @@ Sandbox/LambdaProfile-Shutdown.json
 **.vcxproj
 **.vcxproj.filters
 **.vcxproj.user
-**/imgui.ini
+
 Lambda/vendor/GLFW
 Lambda/vendor/imgui
