@@ -18,7 +18,6 @@ namespace Lambda
 
 	Scene::Scene()
 	{
-
 	}
 
 	Scene::~Scene()
@@ -32,6 +31,7 @@ namespace Lambda
 		entity.AddComponent<TransformComponent>();
 		auto& tag = entity.AddComponent<TagComponent>();
 		tag.Tag = name.empty() ? "Entity" : name;
+		tag.order = renderOrder++;
 		return entity;
 	}
 
@@ -62,17 +62,45 @@ namespace Lambda
 
 		if (mainCamera)
 		{
+			
 			Renderer2D::BeginScene(*mainCamera, cameraTransform);
+			
+			//auto group = m_Registry.group<TransformComponent>(entt::get<SpriteRendererComponent>, entt::exclude<ClickComponent>);
+			
+			
 
-			auto group = m_Registry.group<TransformComponent>(entt::get<SpriteRendererComponent>);
-			for (auto entity : group)
+			auto group = m_Registry.group<TransformComponent>(entt::get<SpriteRendererComponent, TagComponent>);
+
+			group.sort<TagComponent>([](const auto &a, const auto &b)
 			{
-				auto& [transform, sprite] = group.get<TransformComponent, SpriteRendererComponent>(entity);
+				return a.order < b.order;
+			});
 
-				Renderer2D::DrawSprite(transform.GetTransform(), sprite, (int)entity);
+			for (auto entity : group)
+			{	
+				auto&[transform, sprite] = group.get<TransformComponent, SpriteRendererComponent>(entity);
+				Renderer2D::DrawSprite(transform.GetTransform(), sprite, (int)entity);	
 			}
+			
 
+			/*auto clickedGroup = m_Registry.group<ClickComponent>(entt::get<TransformComponent, SpriteRendererComponent>);
+			
+			clickedGroup.sort([](const entt::entity a, const entt::entity b) {
+				return (int)a > (int)b;
+			});
+
+			for (auto clickedEntity : clickedGroup)
+			{	
+				auto&[transform, sprite] = clickedGroup.get<TransformComponent, SpriteRendererComponent>(clickedEntity);
+				Renderer2D::DrawSprite(transform.GetTransform(), sprite, (int)clickedEntity);
+			}*/
+
+			/*if (group.size() == 0 && clickedGroup.size() != 0)
+			{
+				m_Registry.clear<ClickComponent>();
+			}*/
 			Renderer2D::EndScene();
+
 		}
 
 
@@ -123,6 +151,17 @@ namespace Lambda
 
 	}
 
+	/*template<>
+	void Scene::OnComponentAdded<ClickComponent>(Entity entity, ClickComponent& component)
+	{
+
+	}
+
+	template<>
+	void Scene::OnComponentAdded<SelectComponent>(Entity entity, SelectComponent& component)
+	{
+
+	}*/
 	/*
 	template<>
 	void Scene::OnComponentAdded<NativeScriptComponent>(Entity entity, NativeScriptComponent& component)
@@ -131,4 +170,20 @@ namespace Lambda
 	}
 	*/
 
+	void Scene::DeleteAllClickedObjects()
+	{
+		auto group = m_Registry.group<TransformComponent>(entt::get<SpriteRendererComponent, TagComponent>);
+
+		//group.sort<TagComponent>([](const auto &a, const auto &b)
+		//{
+		//	return (int)a < (int)b;
+		//});
+
+		for (auto entity : group)
+		{
+			m_Registry.get<TagComponent>(entity).order = (int)entity;
+			
+		}
+		//m_Registry.clear<ClickComponent>();
+	}
 }

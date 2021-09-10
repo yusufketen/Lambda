@@ -10,12 +10,36 @@ namespace Lambda
 	struct TagComponent
 	{
 		std::string Tag;
+		int order;
 
 		TagComponent() = default;
 		TagComponent(const TagComponent&) = default;
 		TagComponent(std::string& tag)
 			: Tag(tag) {}
 	};
+
+	struct SelectComponent
+	{
+		// unused variable
+		int selectCount = 0; 
+
+		SelectComponent() = default;
+		SelectComponent(const SelectComponent&) = default;
+		SelectComponent(int select)
+			: selectCount(select) {}
+	};
+
+	struct ClickComponent
+	{
+		// unused variable
+		int clickCount = 0;
+
+		ClickComponent() = default;
+		ClickComponent(const ClickComponent&) = default;
+		ClickComponent(int click)
+			: clickCount(click){}
+	};
+
 	struct TransformComponent
 	{
 		glm::vec3 Translation = { 0.0f, 0.0f, 0.0f };
@@ -60,4 +84,5 @@ namespace Lambda
 		CameraComponent() = default;
 		CameraComponent(const CameraComponent&) = default;
 	};
+
 }

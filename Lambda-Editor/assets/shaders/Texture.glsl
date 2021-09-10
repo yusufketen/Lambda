@@ -34,6 +34,7 @@ void main()
 
 layout(location = 0) out vec4 color;
 layout(location = 1) out int color2;
+layout(location = 2) out ivec4 color3;
 
 in vec4			v_Color;
 in vec2			v_TexCoord;
@@ -47,4 +48,6 @@ void main()
 {
 	color = texture(u_Textures[int(v_TexIndex)], v_TexCoord * v_TilingFactor) * v_Color;
 	color2 = v_EntityID;
+	color3 = ivec4(2147483647,-2147483647,v_EntityID,-2147483648);
+	
 }

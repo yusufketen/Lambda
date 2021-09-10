@@ -33,6 +33,7 @@ namespace Lambda {
 		Entity m_SecondCamera;
 
 		Entity m_HoveredEntity;
+		glm::ivec4 entityIDs = { -1, -1, -1, -1 };
 
 		bool m_PrimaryCamera = true;
 		bool m_VSyncActive = true;
@@ -46,7 +47,9 @@ namespace Lambda {
 
 		// Panels
 		SceneHierarchyPanel m_SceneHierarchyPanel;
-		
+		Entity m_ClickedEntity;
+		bool needUpdateClickedEntity = false;
+
 	};
 
 }

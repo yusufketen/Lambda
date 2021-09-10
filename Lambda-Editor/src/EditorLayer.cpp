@@ -20,7 +20,7 @@ namespace Lambda
 		m_CheckerboardTexture = Texture2D::Create("assets/textures/Checkerboard.png");
 
 		FramebufferSpecification fbSpec;
-		fbSpec.Attachments = { FramebufferTextureFormat::RGBA8, FramebufferTextureFormat::RED_INTEGER, FramebufferTextureFormat::Depth };
+		fbSpec.Attachments = { FramebufferTextureFormat::RGBA8, FramebufferTextureFormat::RED_INTEGER, FramebufferTextureFormat::Depth ,FramebufferTextureFormat::RGBA_INTEGER};
 		fbSpec.Width = 1280;
 		fbSpec.Height = 720;
 		m_Framebuffer = Framebuffer::Create(fbSpec);
@@ -36,7 +36,8 @@ namespace Lambda
 		auto blueSquare = m_ActiveScene->CreateEntity("Blue Square");
 		blueSquare.AddComponent<SpriteRendererComponent>(glm::vec4{ 0.0f, 0.0f, 1.0f, 1.0f });
 
-
+		auto yellowSquare = m_ActiveScene->CreateEntity("Yellow Square");
+		yellowSquare.AddComponent<SpriteRendererComponent>(glm::vec4{ 1.0f, 1.0f, 0.0f, 1.0f });
 
 		m_CameraEntity = m_ActiveScene->CreateEntity("Camera A");
 		m_CameraEntity.AddComponent<CameraComponent>();
@@ -94,9 +95,28 @@ namespace Lambda
 		if(mouseX >= 0 && mouseY >= 0 && mouseX < (int)viewportSize.x &&  mouseY < (int)viewportSize.y)
 		{
 			int pixelData = m_Framebuffer->ReadPixel(1, mouseX, mouseY);
+			
 			m_HoveredEntity = pixelData == -1 ? Entity() : Entity((entt::entity)pixelData, m_ActiveScene.get());
+			
+			// RGBA Implementation Begin
+			if (pixelData != -1)
+			{
+				entityIDs = m_Framebuffer->ReadPixelRGBA(2, mouseX, mouseY);
+			}
+			else
+			{
+				entityIDs = { -1, -1, -1, -1 };
+			}
+			
+			// RGBA Implementation End
+
 		}
 
+		if (needUpdateClickedEntity)
+		{
+			m_ClickedEntity = m_HoveredEntity;
+			needUpdateClickedEntity = false;
+		}
 		m_Framebuffer->Unbind();
 	}
 
@@ -169,13 +189,25 @@ namespace Lambda
 		}
 
 		ImGui::Separator();
-
+		int objectOrder = -1;
 		std::string name = "None";
+		std::string clickedEntity = "None";
 		if (m_HoveredEntity)
+		{
 			name = m_HoveredEntity.GetComponent<TagComponent>().Tag;
+			objectOrder =m_HoveredEntity.GetComponent<TagComponent>().order;
+			if (m_ClickedEntity)
+			{
+				clickedEntity = m_ClickedEntity.GetComponent<TagComponent>().Tag;
+			}
+		}
+		
 
 		ImGui::Text("Hovered Entity: %s", name.c_str());
+		ImGui::Text("Clicked Entity: %s", clickedEntity.c_str());
 
+		ImGui::Text("R: %d G: %d B: %d A: %d", entityIDs.r, entityIDs.g, entityIDs.b, entityIDs.a);
+		ImGui::Text("Render Order: %d", objectOrder);
 		auto stats = Renderer2D::GetStats();
 		ImGui::Text("Renderer2D Stats:");
 		ImGui::Text("Draw Calls: %d", stats.DrawCalls);
@@ -223,6 +255,36 @@ namespace Lambda
 	{
 		if(e.GetMouseButton() == Mouse::ButtonLeft)
 		{
+			if (m_HoveredEntity)
+			{
+				if (!m_ClickedEntity)
+				{
+					m_ClickedEntity = m_HoveredEntity;
+				}
+				// After first selection
+				else
+				{
+					if (m_HoveredEntity == m_ClickedEntity)
+					{
+						m_HoveredEntity.GetComponent<TagComponent>().order = m_ActiveScene->renderOrder;
+						m_ActiveScene->renderOrder++;
+						needUpdateClickedEntity = true;
+					}
+					else
+					{
+						m_ClickedEntity = Entity();
+						needUpdateClickedEntity = true;
+					}
+				}
+			}
+			// Any object is not selected
+			else
+			{
+				m_ClickedEntity = Entity();
+				m_ActiveScene->DeleteAllClickedObjects();
+				// Remove all click components from all entities
+			}
+
 			if(m_ViewportHovered)
 				m_SceneHierarchyPanel.SetSelectedEntity(m_HoveredEntity);
 		}
