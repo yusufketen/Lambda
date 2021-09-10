@@ -115,6 +115,7 @@ namespace Lambda
 		if (needUpdateClickedEntity)
 		{
 			m_ClickedEntity = m_HoveredEntity;
+			m_SceneHierarchyPanel.SetSelectedEntity(m_ClickedEntity);
 			needUpdateClickedEntity = false;
 		}
 		m_Framebuffer->Unbind();
