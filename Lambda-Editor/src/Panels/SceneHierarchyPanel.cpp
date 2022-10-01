@@ -33,7 +33,7 @@ namespace Lambda
 			m_SelectionContext = {};
 
 		// Right-click blank space
-		if(ImGui::BeginPopupContextWindow(0, 1, false))
+		if(ImGui::BeginPopupContextWindow())
 		{
 			if (ImGui::MenuItem("Create Empty Entity"))
 				m_Context->CreateEntity("Empty Entity");
