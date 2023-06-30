@@ -1,15 +1,12 @@
 #include "lmpch.h"
 #include "Lambda/Core/Application.h"
-
 #include "Lambda/Core/Log.h"
-
 #include "Lambda/Renderer/Renderer.h"
-
 #include "Lambda/Core/Input.h"
-
 #include <GLFW/glfw3.h>
 
-namespace Lambda {
+namespace Lambda
+{
 
 	Application* Application::s_Instance = nullptr;
 
