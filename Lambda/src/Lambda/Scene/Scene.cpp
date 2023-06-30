@@ -81,6 +81,11 @@ namespace Lambda
 				auto&[transform, sprite] = group.get<TransformComponent, SpriteRendererComponent>(entity);
 				Renderer2D::DrawSprite(transform.GetTransform(), sprite, (int)entity);	
 			}
+
+			auto& [transform, sprite] = group.get<TransformComponent, SpriteRendererComponent>(group[2]);
+			
+			Renderer2D::DrawCube({ transform.Translation.x, transform.Translation.y, transform.Translation.z }, { transform.Scale.x, transform.Scale.y, transform.Scale.z }, { 0.8f, 0.2f, 0.3f, 1.0f });
+
 			
 
 			/*auto clickedGroup = m_Registry.group<ClickComponent>(entt::get<TransformComponent, SpriteRendererComponent>);

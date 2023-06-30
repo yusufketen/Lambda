@@ -17,7 +17,7 @@ namespace Lambda
 		ExampleLayer()
 			: Layer("Example"), m_CameraController(1280.0f / 720.0f)
 		{
-			m_VertexArray = Lambda::VertexArray::Create();
+			m_VertexArray = VertexArray::Create();
 
 			float vertices[3 * 7] = {
 				-0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
@@ -25,19 +25,19 @@ namespace Lambda
 				 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f,
 			};
 
-			Lambda::Ref<Lambda::VertexBuffer> vertexBuffer = Lambda::VertexBuffer::Create(vertices, sizeof(vertices));
-			Lambda::BufferLayout layout = {
-				{Lambda::ShaderDataType::Float3, "a_Position" },
-				{Lambda::ShaderDataType::Float4, "a_Color" }
+			Ref<VertexBuffer> vertexBuffer = VertexBuffer::Create(vertices, sizeof(vertices));
+			BufferLayout layout = {
+				{ShaderDataType::Float3, "a_Position" },
+				{ShaderDataType::Float4, "a_Color" }
 			};
 			vertexBuffer->SetLayout(layout);
 			m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 			uint32_t indices[3] = { 0, 1, 2 };
-			Lambda::Ref<Lambda::IndexBuffer> indexBuffer = Lambda::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t));
+			Ref<IndexBuffer> indexBuffer = IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t));
 			m_VertexArray->SetIndexBuffer(indexBuffer);
 
-			m_SquareVA = Lambda::VertexArray::Create();
+			m_SquareVA = VertexArray::Create();
 
 			float squareVertices[5 * 4] = {
 				-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
@@ -46,15 +46,15 @@ namespace Lambda
 				-0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 			};
 
-			Lambda::Ref<Lambda::VertexBuffer> squareVB = Lambda::VertexBuffer::Create(squareVertices, sizeof(squareVertices));
+			Ref<VertexBuffer> squareVB = VertexBuffer::Create(squareVertices, sizeof(squareVertices));
 			squareVB->SetLayout({
-				{Lambda::ShaderDataType::Float3, "a_Position" },
-				{Lambda::ShaderDataType::Float2, "a_TexCoord" },
+				{ShaderDataType::Float3, "a_Position" },
+				{ShaderDataType::Float2, "a_TexCoord" },
 				});
 			m_SquareVA->AddVertexBuffer(squareVB);
 
 			uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-			Lambda::Ref<Lambda::IndexBuffer> squareIB = Lambda::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
+			Ref<IndexBuffer> squareIB = IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
 			m_SquareVA->SetIndexBuffer(squareIB);
 
 			std::string vertexSrc = R"(
@@ -93,7 +93,7 @@ namespace Lambda
 		)";
 
 
-			m_Shader = Lambda::Shader::Create("VertexPosColor", vertexSrc, fragmentSrc);
+			m_Shader = Shader::Create("VertexPosColor", vertexSrc, fragmentSrc);
 
 			std::string flatColorShaderVertexSrc = R"(
 			#version 330 core
@@ -128,19 +128,19 @@ namespace Lambda
 		)";
 
 
-			m_FlatColorShader = Lambda::Shader::Create("FlatColor", flatColorShaderVertexSrc, flatColorShaderFragmentSrc);
+			m_FlatColorShader = Shader::Create("FlatColor", flatColorShaderVertexSrc, flatColorShaderFragmentSrc);
 
 
 			auto textureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
 
-			m_Texture = Lambda::Texture2D::Create("assets/textures/Checkerboard.png");
-			m_LogoTexture = Lambda::Texture2D::Create("assets/textures/ChernoLogo.png");
+			m_Texture = Texture2D::Create("assets/textures/Checkerboard.png");
+			m_LogoTexture = Texture2D::Create("assets/textures/ChernoLogo.png");
 
 			textureShader->Bind();
 			textureShader->SetInt("u_Texture", 0);
 		}
 
-		void OnUpdate(Lambda::Timestep ts) override
+		void OnUpdate(Timestep ts) override
 		{
 			//LM_TRACE("Timestep: {0}ms", ts.GetMilliseconds());
 
@@ -148,10 +148,10 @@ namespace Lambda
 			m_CameraController.OnUpdate(ts);
 
 			// Render
-			Lambda::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
-			Lambda::RenderCommand::Clear();
+			RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f, 1 });
+			RenderCommand::Clear();
 
-			Lambda::Renderer::BeginScene(m_CameraController.GetCamera());
+			Renderer::BeginScene(m_CameraController.GetCamera());
 
 			glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
@@ -164,22 +164,24 @@ namespace Lambda
 				{
 					glm::vec3 pos(x * 0.11f, y * 0.11f, 0.0f);
 					glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
-					Lambda::Renderer::Submit(m_FlatColorShader, m_SquareVA, transform);
+					Renderer::Submit(m_FlatColorShader, m_SquareVA, transform);
 				}
 			}
 
 			auto textureShader = m_ShaderLibrary.Get("Texture");
 
 			m_Texture->Bind();
-			Lambda::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+			Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 			m_LogoTexture->Bind();
-			Lambda::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+			Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+
+
 
 			// Triangle
-			//Lambda::Renderer::Submit(m_Shader, m_VertexArray);
+			//Renderer::Submit(m_Shader, m_VertexArray);
 
-			Lambda::Renderer::EndScene();
+			Renderer::EndScene();
 		}
 
 		virtual void OnImGuiRender() override
@@ -191,27 +193,27 @@ namespace Lambda
 			ImGui::End();
 		}
 
-		void OnEvent(Lambda::Event& e) override
+		void OnEvent(Event& e) override
 		{
 			m_CameraController.OnEvent(e);
 		}
 
 	private:
-		Lambda::ShaderLibrary m_ShaderLibrary;
-		Lambda::Ref<Lambda::Shader> m_Shader;
-		Lambda::Ref<Lambda::VertexArray> m_VertexArray;
+		ShaderLibrary m_ShaderLibrary;
+		Ref<Shader> m_Shader;
+		Ref<VertexArray> m_VertexArray;
 
-		Lambda::Ref<Lambda::Shader> m_FlatColorShader;
-		Lambda::Ref<Lambda::VertexArray> m_SquareVA;
+		Ref<Shader> m_FlatColorShader;
+		Ref<VertexArray> m_SquareVA;
 
-		Lambda::Ref<Lambda::Texture2D> m_Texture, m_LogoTexture;
+		Ref<Texture2D> m_Texture, m_LogoTexture;
 
-		Lambda::OrthographicCameraController m_CameraController;
+		OrthographicCameraController m_CameraController;
 
 		glm::vec3 m_SquareColor = { 0.2f, 0.3f, 0.8f };
 	};
 
-	class Sandbox : public Lambda::Application
+	class Sandbox : public Application
 	{
 	public:
 		Sandbox()
@@ -226,7 +228,7 @@ namespace Lambda
 		}
 	};
 
-	Lambda::Application* Lambda::CreateApplication()
+	Application* CreateApplication()
 	{
 		return new Sandbox();
 	}
